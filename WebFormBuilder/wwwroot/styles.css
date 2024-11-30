@@ -1,0 +1,195 @@
+﻿*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, sans-serif;
+}
+
+body
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #f4f4f9;
+}
+
+#form-container
+{
+	width: 100%;
+	max-width: 400px;
+	background: #ffffff;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form
+{
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+label
+{
+	display: block;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select
+{
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1rem;
+	color: #555;
+	background: #f9f9f9;
+	transition: all 0.3s ease;
+}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="password"]:focus,
+	select:focus
+	{
+		border-color: #007bff;
+		outline: none;
+		background: #ffffff;
+		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	}
+
+input[type="radio"],
+input[type="checkbox"]
+{
+	margin-right: 0.5rem;
+	transform: scale(1.2);
+}
+
+button
+{
+	padding: 0.75rem;
+	font-size: 1rem;
+	font-weight: bold;
+	color: #ffffff;
+	background: #007bff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+	button:hover
+	{
+		background: #0056b3;
+	}
+
+div
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.radio-group,
+.checkbox-group
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 1rem;
+	align-items: center;
+}
+
+	.radio-group > div,
+	.checkbox-group > div
+	{
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+button[type="submit"]
+{
+	margin-top: 1rem;
+}
+
+
+.tooltip-wrapper
+{
+	display: inline-block;
+	margin-left: 0.5rem;
+	position: relative;
+	cursor: pointer;
+	vertical-align: baseline;
+}
+
+.tooltip-icon
+{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background-color: #007bff;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1;
+	vertical-align: middle;
+	transform: translateY(-2px);
+}
+
+.tooltip-text
+{
+	visibility: hidden;
+	width: 250px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	padding: 0.5rem;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -100px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip-wrapper:hover .tooltip-text
+{
+	visibility: visible;
+	opacity: 1;
+}
+
+textarea
+{
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1rem;
+	color: #555;
+	background: #f9f9f9;
+	transition: all 0.3s ease;
+	resize: vertical; /* Maakt de textarea verticaal verstelbaar */
+}
+
+	textarea:focus
+	{
+		border-color: #007bff;
+		outline: none;
+		background: #ffffff;
+		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	}
+
+
