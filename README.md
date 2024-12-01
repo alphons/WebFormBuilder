@@ -152,7 +152,7 @@ public class SubmitDataController : ControllerBase
 
 ## TODO
  1. make options work for ranges
- 2. make options work for ranges for tel input
+ 2. make options work as pattern for tel input
  3. make options work for other input elements
 
 ## License
