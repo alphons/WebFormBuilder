@@ -2,33 +2,7 @@
 
 namespace WebFormBuilder.Models;
 
-public enum HtmlInputType
-{
-	Text,
-	Password,
-	Email,
-	Checkbox,
-	Radio,
-	File,
-	Submit,
-	Select,
-	Textarea,
 
-	Tel,
-	Url,
-	Number,
-	Range,
-	Date,
-	Time,
-	DateTimeLocal,
-	Month,
-	Week,
-	Color,
-	Image,
-	Reset,
-	Button,
-	Hidden,
-}
 
 public class FormField
 {
