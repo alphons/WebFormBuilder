@@ -2,6 +2,9 @@
 
 This JavaScript script is responsible for dynamically generating a form based on a configuration fetched from a server-side API. The form is populated with different types of input fields, such as text, email, radio buttons, checkboxes, and more. It includes the ability to submit form data back to the server, making it ideal for dynamic web applications that need to handle customizable forms without hardcoding the structure in HTML.
 
+![readme](https://github.com/user-attachments/assets/ebdb9a5e-b6ac-4a63-bf50-59dfa8275e15)
+
+
 ## Features
 
 1. **Fetch Form Configuration:**
