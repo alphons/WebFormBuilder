@@ -64,6 +64,12 @@ function createTooltip(text)
 	return tooltipWrapper;
 }
 
+function toPascalCase(str)
+{
+	return str
+		.replace(/(^\w|[\s-_]+\w)/g, match => match.replace(/[\s-_]/, '').toUpperCase());
+}
+
 async function generateForm()
 {
 	const formConfig = await fetchFormConfig();
@@ -75,7 +81,8 @@ async function generateForm()
 
 	formConfig.forEach((field) =>
 	{
-		field.Type = field.Type.toLowerCase();
+		field.Type = (field.Type ?? "text").toLowerCase();
+		field.Label ??= toPascalCase(field.Name);
 		const wrapper = document.createElement("div");
 		generateField(field, wrapper);
 		form.appendChild(wrapper);
@@ -191,6 +198,19 @@ function createInputOrTextareaField(field, wrapper)
 	if (field.Type !== "textarea")
 	{
 		element.type = field.Type;
+	}
+
+	if (field.Type === "range" && field.hasOwnProperty('Options'))
+	{
+		for (const key in field.Options)
+		{
+			if (field.Options.hasOwnProperty(key))
+			{
+				const [property, value] = field.Options[key].split(':');
+
+				element[property] = value;
+			}
+		}
 	}
 
 	if (field.Placeholder)

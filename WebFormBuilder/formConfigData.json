@@ -2,7 +2,7 @@
 	{
 		"Type": "Text",
 		"Name": "username",
-		"Label": "Username",
+		"Label": "UserName",
 		"Placeholder": "Enter your username",
 		"Tooltip": "This will be your unique identifier.",
 		"Value": "JohnDoe"
@@ -26,7 +26,7 @@
 	{
 		"Type": "Radio",
 		"Name": "gender",
-		"Label": "Gender",
+		"Label": null,
 		"Tooltip": "Select your gender.",
 		"Options": [ "Male", "Female", "Other" ],
 		"Value": "Male"
@@ -45,7 +45,7 @@
 		"Label": "Country",
 		"Tooltip": "Choose the country you currently reside in.",
 		"Options": [ "Netherlands", "Belgium", "Germany" ],
-		"Value": "Netherlands"
+		"Value": "Belgium"
 	},
 	{
 		"Type": "File",
@@ -98,6 +98,7 @@
 		"Name": "satisfaction",
 		"Label": "Satisfaction Level",
 		"Tooltip": "Rate your satisfaction from 1 to 10.",
+		"Options": [ "min:1", "max:10", "step:1" ],
 		"Value": "5"
 	},
 	{
