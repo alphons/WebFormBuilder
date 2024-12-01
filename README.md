@@ -9,11 +9,11 @@ This JavaScript script is responsible for dynamically generating a form based on
 
 2. **Dynamic Form Generation:**
    - The `generateForm()` function builds the form by iterating over each field configuration and creating HTML elements accordingly. Supported field types include:
-     - Text, Email, Password
+     - Text, Email, Password,Tel, Url, Number, Range, Date, Time, DateTimeLocal, Month, Week, Color, Textarea
      - Radio, Checkbox
      - Select Dropdowns
      - File Uploads
-     - Submit, Reset, Hidden, etc.
+     - Image, Button, Reset, Hidden, Submit etc.
 
 3. **Tooltips and Labels:**
    - Fields can include labels and tooltips for better UX. Tooltips are created using the `createTooltip()` function, adding descriptive icons that display helpful information when hovered over.
@@ -66,6 +66,24 @@ The script will automatically attach the generated form inside this container on
 
 ## Example API Response for Form Configuration
 
+Example API controller for getting the form configuration.
+
+```c#
+[ApiController]
+[Route("api/[controller]")]
+public class FormConfigController : ControllerBase
+{
+  [HttpGet]
+  public async Task<IActionResult> GetFormConfig()
+  {
+    var jsonFilePath = Path.Combine(AppContext.BaseDirectory, "formConfigData.json");
+    var jsonData = await System.IO.File.ReadAllTextAsync(jsonFilePath);
+    var list = JsonSerializer.Deserialize<List<FormField>>(jsonData);
+    return Ok(list);
+  }
+}
+```
+
 Here is an example of how the form configuration JSON might look like:
 
 ```json
@@ -93,6 +111,38 @@ Here is an example of how the form configuration JSON might look like:
 ```
 
 This JSON configuration determines how the form is rendered, including input types, labels, options, and tooltips.
+
+Exampple API controller processing form submitted information.
+
+```c#
+[ApiController]
+[Route("api/[controller]")]
+public class SubmitDataController : ControllerBase
+{
+  [HttpPost]
+  [Consumes("multipart/form-data")]
+  public async Task<IActionResult> UploadForm()
+  {
+    var form = await HttpContext.Request.ReadFormAsync();
+    if (form == null)
+      return BadRequest("Thats not a good reqest.");
+
+    foreach(var key in form.Keys)
+    {
+      Debug.WriteLine($"{key}:{form[key]}");
+    }
+
+    foreach (var file in form.Files)
+    {
+      Debug.WriteLine($"{file.Name} {file.FileName} {file.Length} bytes");
+    }
+
+    return Ok(new { Message = "Form data successfully received." });
+  }
+}
+```
+
+
 
 ## How to Run
 
