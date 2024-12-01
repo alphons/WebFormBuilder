@@ -1,8 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-
-builder.Services.AddMvcCore().WithMultiParameterModelBinding(SanitizeAll: true);
+builder.Services.AddControllers()
+	.AddJsonOptions(options =>
+	{
+		options.JsonSerializerOptions.PropertyNamingPolicy = null;
+		options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+	});
 
 var app = builder.Build();
 

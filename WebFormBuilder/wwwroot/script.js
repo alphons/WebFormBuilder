@@ -2,8 +2,13 @@
 {
 	try
 	{
-		const result = await netproxyasync("/api/FormConfig");
-		return result;
+		const response = await fetch('/api/FormConfig');
+
+		if (!response.ok)
+			throw new Error(`HTTP error! Status: ${response.status}`);
+
+		const data = await response.json();
+		return data;
 	}
 	catch (error)
 	{
@@ -18,8 +23,21 @@ async function submitFormData(event)
 
 	try
 	{
-		const result = await netproxyasync("/api/SubmitData", new FormData(event.target));
-		console.log("Form data successfully submitted:", result);
+		const response = await fetch('/api/SubmitData',
+		{
+			method: 'POST',
+			body: new FormData(event.target)
+		});
+
+		if (response.ok)
+		{
+			const result = await response.json();
+			console.log('Success:', result);
+		} else
+		{
+			console.error('Error:', response.statusText);
+		}
+
 	}
 	catch (error)
 	{
@@ -49,7 +67,7 @@ function createTooltip(text)
 async function generateForm()
 {
 	const formConfig = await fetchFormConfig();
-	const formContainer = $id("form-container");
+	const formContainer = document.getElementById("form-container");
 
 	const form = document.createElement("form");
 	form.id = "dynamicForm";

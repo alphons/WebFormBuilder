@@ -6,8 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Mvc.ModelBinding.MultiParameter" Version="8.2.2" />
-  </ItemGroup>
-
 </Project>
