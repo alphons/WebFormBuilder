@@ -5,7 +5,7 @@
 		"Label": "UserName",
 		"Placeholder": "Enter your username",
 		"Tooltip": "This will be your unique identifier.",
-		"Properties": [ "autocomplete=username" ],
+		"Properties": [ "autocomplete=username" , "required=yes" ],
 		"Value": "JohnDoe"
 	},
 	{
