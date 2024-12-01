@@ -1,8 +1,15 @@
-﻿*
+﻿html
 {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after
+{
+	box-sizing: inherit;
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
 	font-family: Arial, sans-serif;
 }
 
@@ -15,7 +22,7 @@ body
 	background: #f4f4f9;
 }
 
-#form-container
+.form-container
 {
 	width: 100%;
 	max-width: 400px;
@@ -25,185 +32,185 @@ body
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-form
-{
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-}
-
-label
-{
-	display: block;
-	font-weight: bold;
-	margin-bottom: 0.5rem;
-	color: #333;
-}
-
-input:not([type="file"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), select, textarea
-{
-	width: 100%;
-	padding: 0.75rem;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 1rem;
-	color: #555;
-	background: #f9f9f9;
-	transition: all 0.3s ease;
-}
-
-	input:focus,
-	select:focus,
-	textarea:focus
-	{
-		border-color: #007bff;
-		outline: none;
-		background: #fff;
-		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-	}
-
-input[type="color"]
-{
-	height: 2.7rem;
-	padding: 0 !important;
-}
-
-input[type="radio"],
-input[type="checkbox"]
-{
-	margin-top: 1rem;
-	margin-right: 0.5rem;
-	transform: scale(1.2);
-}
-
-input[type="file"],
-input[type="button"],
-button
-{
-	padding: 0.75rem;
-	font-size: 1rem;
-	font-weight: bold;
-	color: #fff;
-	background: #007bff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: all 0.3s ease;
-}
-
-	input[type="button"]:focus,
-	input[type="file"]:hover,
-	button:hover
-	{
-		background: #0056b3;
-	}
-
-input[type="file"]
-{
-	appearance: none;
-	-webkit-appearance: none;
-}
-
-	input[type="file"]::-webkit-file-upload-button
-	{
-		appearance: none;
-		background: transparent;
-		border: none;
-		border-right: solid 2px white;
-		font: inherit;
-		cursor: pointer;
-		color: white;
-	}
-
-div
-{
-	display: flex;
-	flex-direction: column;
-}
-
-.radio-group,
-.checkbox-group
-{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 1rem;
-	align-items: center;
-}
-
-	.radio-group > div,
-	.checkbox-group > div
+	.form-container form
 	{
 		display: flex;
-		align-items: center;
-		gap: 0.5rem;
+		flex-direction: column;
+		gap: 1.5rem;
 	}
 
-button[type="submit"],
-button[type="reset"]
-{
-	margin-top: 0.1rem;
-}
+	.form-container label
+	{
+		display: block;
+		font-weight: bold;
+		margin-bottom: 0.5rem;
+		color: #333;
+	}
 
-.tooltip-wrapper
-{
-	display: inline-block;
-	margin-left: 0.5rem;
-	position: relative;
-	cursor: pointer;
-	vertical-align: baseline;
-}
+	.form-container input:not([type="file"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), select, textarea
+	{
+		width: 100%;
+		padding: 0.75rem;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		font-size: 1rem;
+		color: #555;
+		background: #f9f9f9;
+		transition: all 0.3s ease;
+	}
 
-.tooltip-icon
-{
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	width: 18px;
-	height: 18px;
-	border-radius: 50%;
-	background-color: #007bff;
-	color: #fff;
-	font-size: 12px;
-	font-weight: bold;
-	line-height: 1;
-	vertical-align: middle;
-	transform: translateY(-2px);
-}
+		.form-container input:focus,
+		select:focus,
+		textarea:focus
+		{
+			border-color: #007bff;
+			outline: none;
+			background: #fff;
+			box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+		}
 
-.tooltip-text
-{
-	visibility: hidden;
-	width: 250px;
-	background-color: #333;
-	color: #fff;
-	text-align: center;
-	border-radius: 4px;
-	padding: 0.5rem;
-	position: absolute;
-	z-index: 1;
-	bottom: 125%;
-	left: 50%;
-	margin-left: -100px;
-	opacity: 0;
-	transition: opacity 0.3s;
-}
+	.form-container input[type="color"]
+	{
+		height: 2.7rem;
+		padding: 0 !important;
+	}
 
-.tooltip-wrapper:hover .tooltip-text
-{
-	visibility: visible;
-	opacity: 1;
-}
+	.form-container input[type="radio"],
+	input[type="checkbox"]
+	{
+		margin-top: 1rem;
+		margin-right: 0.5rem;
+		transform: scale(1.2);
+	}
 
-textarea
-{
-	width: 100%;
-	padding: 0.75rem;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 1rem;
-	color: #555;
-	background: #f9f9f9;
-	transition: all 0.3s ease;
-	resize: vertical;
-}
+	.form-container input[type="file"],
+	input[type="button"],
+	button
+	{
+		padding: 0.75rem;
+		font-size: 1rem;
+		font-weight: bold;
+		color: #fff;
+		background: #007bff;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+		.form-container input[type="button"]:focus,
+		input[type="file"]:hover,
+		button:hover
+		{
+			background: #0056b3;
+		}
+
+	.form-container input[type="file"]
+	{
+		appearance: none;
+		-webkit-appearance: none;
+	}
+
+		.form-container input[type="file"]::-webkit-file-upload-button
+		{
+			appearance: none;
+			background: transparent;
+			border: none;
+			border-right: solid 2px white;
+			font: inherit;
+			cursor: pointer;
+			color: white;
+		}
+
+	.form-container div
+	{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.form-container .radio-group,
+	.form-container .checkbox-group
+	{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1rem;
+		align-items: center;
+	}
+
+		.form-container .radio-group > div,
+		.form-container .checkbox-group > div
+		{
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+	.form-container button[type="submit"],
+	button[type="reset"]
+	{
+		margin-top: 0.1rem;
+	}
+
+	.form-container .tooltip-wrapper
+	{
+		display: inline-block;
+		margin-left: 0.5rem;
+		position: relative;
+		cursor: pointer;
+		vertical-align: baseline;
+	}
+
+	.form-container .tooltip-icon
+	{
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		background-color: #007bff;
+		color: #fff;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 1;
+		vertical-align: middle;
+		transform: translateY(-2px);
+	}
+
+	.form-container .tooltip-text
+	{
+		visibility: hidden;
+		width: 250px;
+		background-color: #333;
+		color: #fff;
+		text-align: center;
+		border-radius: 4px;
+		padding: 0.5rem;
+		position: absolute;
+		z-index: 1;
+		bottom: 125%;
+		left: 50%;
+		margin-left: -100px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+
+	.form-container .tooltip-wrapper:hover .tooltip-text
+	{
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.form-container textarea
+	{
+		width: 100%;
+		padding: 0.75rem;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		font-size: 1rem;
+		color: #555;
+		background: #f9f9f9;
+		transition: all 0.3s ease;
+		resize: vertical;
+	}

@@ -62,6 +62,7 @@
 		"Name": "remark",
 		"Label": "Remark",
 		"Tooltip": "Any remarks to be made, do it here.",
+		"Properties": [ "rows=4" ],
 		"Value": "1\n2\n"
 	},
 	{

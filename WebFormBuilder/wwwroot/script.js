@@ -70,10 +70,10 @@ function toPascalCase(str)
 		.replace(/(^\w|[\s-_]+\w)/g, match => match.replace(/[\s-_]/, '').toUpperCase());
 }
 
-async function generateForm()
+async function generateForm(formId)
 {
 	const formConfig = await fetchFormConfig();
-	const formContainer = document.getElementById("form-container");
+	const formContainer = document.getElementById(formId);
 
 	const form = document.createElement("form");
 	form.id = "dynamicForm";
@@ -91,7 +91,6 @@ async function generateForm()
 	formContainer.appendChild(form);
 }
 
-const NoFor = ['hidden', 'reset', 'submit', 'checkbox', 'radio'];
 function generateField(field, wrapper)
 {
 	if (field.Type === "hidden")
@@ -258,5 +257,5 @@ function createButtonOrHidden(field)
 }
 
 
-generateForm();
+generateForm("form1");
 
