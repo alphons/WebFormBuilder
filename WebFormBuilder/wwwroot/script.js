@@ -228,4 +228,5 @@ function createHiddenField(field, wrapper)
 	wrapper.style.display = 'none';
 }
 
-onReady(generateForm);
+generateForm();
+

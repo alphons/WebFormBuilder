@@ -40,21 +40,7 @@ label
 	color: #333;
 }
 
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"],
-input[type="url"],
-input[type="number"],
-input[type="range"],
-input[type="date"],
-input[type="time"],
-input[type="datetimelocal"],
-input[type="month"],
-input[type="week"],
-input[type="image"],
-input[type="color"],
+input:not([type="file"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]),
 select
 {
 	width: 100%;
@@ -67,20 +53,7 @@ select
 	transition: all 0.3s ease;
 }
 
-	input[type="text"]:focus,
-	input[type="email"]:focus,
-	input[type="password"]:focus,
-	input[type="tel"]:focus,
-	input[type="url"]:focus,
-	input[type="number"]:focus,
-	input[type="range"]:focus,
-	input[type="date"]:focus,
-	input[type="time"]:focus,
-	input[type="datetimelocal"]:focus,
-	input[type="month"]:focus,
-	input[type="week"]:focus,
-	input[type="color"]:focus,
-	input[type="image"]:focus,
+	input:not([type="file"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):focus
 	select:focus
 	{
 		border-color: #007bff;
@@ -90,23 +63,23 @@ select
 	}
 
 
-	input[type="file"]:hover
-	{
-		background: #0056b3;
-		border-color: #218838;
-	}
+input[type="file"]:hover
+{
+	background: #0056b3;
+	border-color: #218838;
+}
 
 
 input[type="color"]
 {
 	height: 2.7rem;
-	padding:0;
+	padding: 0 !important;
 }
 
 input[type="radio"],
 input[type="checkbox"]
 {
-	margin-top:1rem;
+	margin-top: 1rem;
 	margin-right: 0.5rem;
 	transform: scale(1.2);
 }
@@ -132,16 +105,16 @@ button
 		background: #0056b3;
 	}
 
-input[type="file"]::-webkit-file-upload-button
-{
-	appearance: none;
-	background: transparent;
-	border: none;
-	border-right: solid 2px white;
-	font: inherit;
-	cursor: pointer;
-	color: white;
-}
+	input[type="file"]::-webkit-file-upload-button
+	{
+		appearance: none;
+		background: transparent;
+		border: none;
+		border-right: solid 2px white;
+		font: inherit;
+		cursor: pointer;
+		color: white;
+	}
 
 input[type="file"]
 {
@@ -250,5 +223,3 @@ textarea
 		background: #ffffff;
 		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 	}
-
-
