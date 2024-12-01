@@ -16,36 +16,9 @@ async function submitFormData(event)
 {
 	event.preventDefault();
 
-	const formDataMap = new Map();
-	const formElements = $$('form input, form select, form textarea');
-
-	const filteredElements = Array.from(formElements).filter((element) =>
-		element.type !== "radio" || element.checked
-	);
-
-	filteredElements.forEach((element) =>
-	{
-		const existingField = formDataMap.get(element.name);
-
-		if (element.type === "checkbox" && element.checked && existingField)
-		{
-			existingField.Value += `,${element.value}`;
-		}
-		else if (element.type !== "checkbox" || element.checked)
-		{
-			formDataMap.set(element.name, {
-				Name: element.name,
-				Type: element.type,
-				Value: existingField ? `${existingField.Value},${element.value}` : element.value
-			});
-		}
-	});
-
-	const formDataArray = Array.from(formDataMap.values());
-
 	try
 	{
-		const result = await netproxyasync("/api/SubmitData", { body: formDataArray });
+		const result = await netproxyasync("/api/SubmitData", new FormData(event.target));
 		console.log("Form data successfully submitted:", result);
 	}
 	catch (error)
@@ -84,6 +57,7 @@ async function generateForm()
 
 	formConfig.forEach((field) =>
 	{
+		field.Type = field.Type.toLowerCase();
 		const wrapper = document.createElement("div");
 		generateField(field, wrapper);
 		form.appendChild(wrapper);
@@ -118,7 +92,11 @@ function generateField(field, wrapper)
 			createSelectField(field, wrapper);
 			break;
 		case "submit":
-			createSubmitButton(field, wrapper);
+		case "reset":
+			createButton(field, wrapper);
+			break;
+		case "hidden":
+			createHiddenField(field, wrapper);
 			break;
 		default:
 			createInputOrTextareaField(field, wrapper);
@@ -204,19 +182,32 @@ function createInputOrTextareaField(field, wrapper)
 
 	if (field.Value)
 	{
-		element.value = field.Value;
+		if (field.Type === "image")
+			element.src = field.Value;
+		else
+			element.value = field.Value;
 	}
 
 	wrapper.appendChild(element);
 }
 
-function createSubmitButton(field, wrapper)
+function createButton(field, wrapper)
 {
 	const button = document.createElement("button");
-	button.type = "submit";
+	button.type = field.Type;
 	button.name = field.Name;
 	button.textContent = field.Label;
 	wrapper.appendChild(button);
+}
+
+function createHiddenField(field, wrapper)
+{
+	const button = document.createElement("input");
+	button.type = field.Type;
+	button.name = field.Name;
+	button.textContent = field.Label;
+	wrapper.appendChild(button);
+	wrapper.style.display = 'none';
 }
 
 onReady(generateForm);
