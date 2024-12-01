@@ -150,6 +150,11 @@ public class SubmitDataController : ControllerBase
 2. Ensure that the `form-container` is present in the HTML structure.
 3. Load the page, and the script will automatically fetch the form configuration and generate the form inside the container.
 
+## TODO
+ 1. make options work for ranges
+ 2. make options work for ranges for tel input
+ 3. make options work for other input elements
+
 ## License
 
 This project is licensed under the MIT License.
