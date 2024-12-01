@@ -106,6 +106,7 @@ input[type="color"]
 input[type="radio"],
 input[type="checkbox"]
 {
+	margin-top:1rem;
 	margin-right: 0.5rem;
 	transform: scale(1.2);
 }

@@ -202,11 +202,11 @@ function createButton(field, wrapper)
 
 function createHiddenField(field, wrapper)
 {
-	const button = document.createElement("input");
-	button.type = field.Type;
-	button.name = field.Name;
-	button.textContent = field.Label;
-	wrapper.appendChild(button);
+	const input = document.createElement("input");
+	input.type = field.Type;
+	input.name = field.Name;
+	input.value = field.Value;
+	wrapper.appendChild(input);
 	wrapper.style.display = 'none';
 }
 

@@ -37,7 +37,8 @@ namespace DynamicFormApi.Controllers
 					Name = "password",
 					Label = "Password",
 					Placeholder = "Enter a secure password",
-					Tooltip = "Use a strong password with at least 8 characters."
+					Tooltip = "Use a strong password with at least 8 characters.",
+					Value = "0ldP@ssW0rd!"
 				},
 				new FormField
 				{
@@ -69,17 +70,18 @@ namespace DynamicFormApi.Controllers
 				new FormField
 				{
 					Type = HtmlInputType.File,
-					Name = "MyFile",
+					Name = "Files",
 					Label = "Choose a file",
 					Placeholder = "Select a file",
-					Tooltip = "Try to upload this file."
+					Tooltip = "Select a file please."
 				},
 				new FormField
 				{
 					Type = HtmlInputType.Textarea,
 					Name = "remark",
 					Label = "Remark",
-					Tooltip = "Any remarks to be made, do it here."
+					Tooltip = "Any remarks to be made, do it here.",
+					Value = "1\n2\n"
 				},
 				new FormField
 				{
@@ -191,7 +193,7 @@ namespace DynamicFormApi.Controllers
 				{
 					Type = HtmlInputType.Hidden,
 					Name = "hidden_field",
-					Value = "hiddenValue"
+					Value = Guid.NewGuid().ToString()
 				},
 				new FormField
 				{
