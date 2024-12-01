@@ -67,6 +67,7 @@
 		"Label": "Age",
 		"Placeholder": "Enter your age",
 		"Tooltip": "Provide your age in years.",
+		"Properties": ["min=18", "max=120", "step=1"],
 		"Value": "30"
 	},
 	{
@@ -75,6 +76,7 @@
 		"Label": "Date of Birth",
 		"Placeholder": "Select your date of birth",
 		"Tooltip": "Pick your birthdate from the calendar.",
+		"Properties": [ "min=1900-01-01", "max=2024-12-31" ],
 		"Value": "1990-01-01"
 	},
 	{
@@ -98,7 +100,7 @@
 		"Name": "satisfaction",
 		"Label": "Satisfaction Level",
 		"Tooltip": "Rate your satisfaction from 1 to 10.",
-		"Properties": [ "min:1", "max:10", "step:1", "false" ],
+		"Properties": [ "min=1", "max=10", "step=1" ],
 		"Value": "5"
 	},
 	{

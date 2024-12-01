@@ -144,7 +144,7 @@ function AddProperties(field, element)
 		{
 			if (field.Properties.hasOwnProperty(key))
 			{
-				const [property, value] = splitOnce(field.Properties[key], ':');
+				const [property, value] = splitOnce(field.Properties[key], '=');
 
 				value && (element[property] = value);
 			}
