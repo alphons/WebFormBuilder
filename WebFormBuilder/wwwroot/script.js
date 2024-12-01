@@ -129,6 +129,22 @@ function generateField(field, wrapper)
 	}
 }
 
+function AddProperties(field, element)
+{
+	if (field.Properties)
+	{
+		for (const key in field.Properties)
+		{
+			if (field.Properties.hasOwnProperty(key))
+			{
+				const [property, value] = field.Properties[key].split(':');
+
+				element[property] = value;
+			}
+		}
+	}
+}
+
 function createOptionField(field, wrapper)
 {
 	const group = document.createElement("div");
@@ -139,26 +155,28 @@ function createOptionField(field, wrapper)
 		const optionWrapper = document.createElement("div");
 		const inputId = `${field.Name}_${index}`;
 
-		const input = document.createElement("input");
-		input.type = field.Type;
-		input.name = field.Name;
-		input.value = option;
-		input.id = inputId;
+		const element = document.createElement("input");
+		element.type = field.Type;
+		element.name = field.Name;
+		element.value = option;
+		element.id = inputId;
 
 		if (field.Type === "radio" && field.Value === option)
 		{
-			input.checked = true;
+			element.checked = true;
 		}
 		else if (field.Type === "checkbox" && field.Value && field.Value.split(",").includes(option))
 		{
-			input.checked = true;
+			element.checked = true;
 		}
+
+		AddProperties(field, element);
 
 		const label = document.createElement("label");
 		label.htmlFor = inputId;
 		label.textContent = option;
 
-		optionWrapper.appendChild(input);
+		optionWrapper.appendChild(element);
 		optionWrapper.appendChild(label);
 		group.appendChild(optionWrapper);
 	});
@@ -168,9 +186,9 @@ function createOptionField(field, wrapper)
 
 function createSelectField(field, wrapper)
 {
-	const select = document.createElement("select");
-	select.name = field.Name;
-	select.id = field.Name;
+	const element = document.createElement("select");
+	element.name = field.Name;
+	element.id = field.Name;
 
 	field.Options.forEach((option) =>
 	{
@@ -183,10 +201,12 @@ function createSelectField(field, wrapper)
 			optionElement.selected = true;
 		}
 
-		select.appendChild(optionElement);
+		element.appendChild(optionElement);
 	});
 
-	wrapper.appendChild(select);
+	AddProperties(field, element);
+
+	wrapper.appendChild(element);
 }
 
 function createInputOrTextareaField(field, wrapper)
@@ -200,13 +220,13 @@ function createInputOrTextareaField(field, wrapper)
 		element.type = field.Type;
 	}
 
-	if (field.Type === "range" && field.hasOwnProperty('Options'))
+	if (field.hasOwnProperty('Properties'))
 	{
-		for (const key in field.Options)
+		for (const key in field.Properties)
 		{
-			if (field.Options.hasOwnProperty(key))
+			if (field.Properties.hasOwnProperty(key))
 			{
-				const [property, value] = field.Options[key].split(':');
+				const [property, value] = field.Properties[key].split(':');
 
 				element[property] = value;
 			}
@@ -226,25 +246,33 @@ function createInputOrTextareaField(field, wrapper)
 			element.value = field.Value;
 	}
 
+	AddProperties(field, element);
+
 	wrapper.appendChild(element);
 }
 
 function createButton(field, wrapper)
 {
-	const button = document.createElement("button");
-	button.type = field.Type;
-	button.name = field.Name;
-	button.textContent = field.Label;
-	wrapper.appendChild(button);
+	const element = document.createElement("button");
+	element.type = field.Type;
+	element.name = field.Name;
+	element.textContent = field.Label;
+
+	AddProperties(field, element);
+
+	wrapper.appendChild(element);
 }
 
 function createHiddenField(field, wrapper)
 {
-	const input = document.createElement("input");
-	input.type = field.Type;
-	input.name = field.Name;
-	input.value = field.Value;
-	wrapper.appendChild(input);
+	const element = document.createElement("input");
+	element.type = field.Type;
+	element.name = field.Name;
+	element.value = field.Value;
+
+	AddProperties(field, element);
+
+	wrapper.appendChild(element);
 	wrapper.style.display = 'none';
 }
 

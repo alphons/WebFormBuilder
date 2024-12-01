@@ -14,4 +14,5 @@ public class FormField
 	public string? Tooltip { get; set; }
 	public string? Value { get; set; }
 	public List<string>? Options { get; set; }
+	public List<string>? Properties { get; set; }
 }

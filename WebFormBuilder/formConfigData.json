@@ -98,7 +98,7 @@
 		"Name": "satisfaction",
 		"Label": "Satisfaction Level",
 		"Tooltip": "Rate your satisfaction from 1 to 10.",
-		"Options": [ "min:1", "max:10", "step:1" ],
+		"Properties": [ "min:1", "max:10", "step:1" ],
 		"Value": "5"
 	},
 	{
