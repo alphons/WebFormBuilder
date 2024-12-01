@@ -129,6 +129,13 @@ function generateField(field, wrapper)
 	}
 }
 
+function splitOnce(str, delimiter)
+{
+	const index = str.indexOf(delimiter);
+	return index === -1 ? [str] : [str.substring(0, index), str.substring(index + delimiter.length)];
+}
+
+
 function AddProperties(field, element)
 {
 	if (field.Properties)
@@ -137,9 +144,9 @@ function AddProperties(field, element)
 		{
 			if (field.Properties.hasOwnProperty(key))
 			{
-				const [property, value] = field.Properties[key].split(':');
+				const [property, value] = splitOnce(field.Properties[key], ':');
 
-				element[property] = value;
+				value && (element[property] = value);
 			}
 		}
 	}
