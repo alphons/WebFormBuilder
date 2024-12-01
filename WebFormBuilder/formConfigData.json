@@ -5,6 +5,7 @@
 		"Label": "UserName",
 		"Placeholder": "Enter your username",
 		"Tooltip": "This will be your unique identifier.",
+		"Properties": [ "autocomplete=username" ],
 		"Value": "JohnDoe"
 	},
 	{
@@ -13,6 +14,7 @@
 		"Label": "Email Address",
 		"Placeholder": "Enter your email address",
 		"Tooltip": "We will send important updates to this email.",
+		"Properties": [ "autocomplete=email" ],
 		"Value": "example@example.com"
 	},
 	{
@@ -45,6 +47,7 @@
 		"Label": "Country",
 		"Tooltip": "Choose the country you currently reside in.",
 		"Options": [ "Netherlands", "Belgium", "Germany" ],
+		"Properties": [ "autocomplete=off" ],
 		"Value": "Belgium"
 	},
 	{
@@ -85,6 +88,7 @@
 		"Label": "Phone Number",
 		"Placeholder": "Enter your phone number",
 		"Tooltip": "Provide your contact number.",
+		"Properties": [ "autocomplete=phone" ],
 		"Value": "123-456-7890"
 	},
 	{
@@ -155,12 +159,13 @@
 		"Type": "Button",
 		"Name": "custom_button",
 		"Label": "Custom Button",
+		"Value":  "Do not press me",
 		"Tooltip": "Click this button for custom action."
 	},
 	{
 		"Type": "Hidden",
 		"Name": "hidden_field",
-		"Value": "guid-value-placeholder"
+		"Value": "bfbed3d6-ac9d-4451-bb0f-025d043974d6"
 	},
 	{
 		"Type": "Submit",

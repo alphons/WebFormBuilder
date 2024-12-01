@@ -91,12 +91,20 @@ async function generateForm()
 	formContainer.appendChild(form);
 }
 
+const NoFor = ['hidden', 'reset', 'submit', 'checkbox', 'radio'];
 function generateField(field, wrapper)
 {
-	if (field.Label)
+	if (field.Type === "hidden")
+	{
+		wrapper.style.display = 'none';
+	}
+	else if (field.Label)
 	{
 		const label = document.createElement("label");
-		label.htmlFor = field.Name;
+		if (field.Type == "checkbox" || field.Type == "radio")
+			label.htmlFor = field.Name+"_0";
+		else
+			label.htmlFor = field.Name;
 		label.textContent = field.Label;
 		wrapper.appendChild(label);
 
@@ -107,26 +115,29 @@ function generateField(field, wrapper)
 		}
 	}
 
+	var element;
 	switch (field.Type)
 	{
 		case "radio":
 		case "checkbox":
-			createOptionField(field, wrapper);
+			element = createOptionField(field);
 			break;
 		case "select":
-			createSelectField(field, wrapper);
-			break;
-		case "submit":
-		case "reset":
-			createButton(field, wrapper);
+			element = createSelectField(field);
 			break;
 		case "hidden":
-			createHiddenField(field, wrapper);
+		case "submit":
+		case "reset":
+			element = createButtonOrHidden(field);
 			break;
 		default:
-			createInputOrTextareaField(field, wrapper);
+			element = createInputOrTextareaField(field);
 			break;
 	}
+
+	AddProperties(field, element);
+
+	wrapper.appendChild(element);
 }
 
 function splitOnce(str, delimiter)
@@ -152,46 +163,43 @@ function AddProperties(field, element)
 	}
 }
 
-function createOptionField(field, wrapper)
+function createOptionField(field)
 {
-	const group = document.createElement("div");
-	group.classList.add(field.Type === "radio" ? "radio-group" : "checkbox-group");
+	const element = document.createElement("div");
+	element.classList.add(field.Type === "radio" ? "radio-group" : "checkbox-group");
 
 	field.Options.forEach((option, index) =>
 	{
 		const optionWrapper = document.createElement("div");
 		const inputId = `${field.Name}_${index}`;
 
-		const element = document.createElement("input");
-		element.type = field.Type;
-		element.name = field.Name;
-		element.value = option;
-		element.id = inputId;
+		const optelement = document.createElement("input");
+		optelement.type = field.Type;
+		optelement.name = field.Name;
+		optelement.value = option;
+		optelement.id = inputId;
 
 		if (field.Type === "radio" && field.Value === option)
 		{
-			element.checked = true;
+			optelement.checked = true;
 		}
 		else if (field.Type === "checkbox" && field.Value && field.Value.split(",").includes(option))
 		{
-			element.checked = true;
+			optelement.checked = true;
 		}
-
-		AddProperties(field, element);
 
 		const label = document.createElement("label");
 		label.htmlFor = inputId;
 		label.textContent = option;
 
-		optionWrapper.appendChild(element);
+		optionWrapper.appendChild(optelement);
 		optionWrapper.appendChild(label);
-		group.appendChild(optionWrapper);
+		element.appendChild(optionWrapper);
 	});
-
-	wrapper.appendChild(group);
+	return element;
 }
 
-function createSelectField(field, wrapper)
+function createSelectField(field)
 {
 	const element = document.createElement("select");
 	element.name = field.Name;
@@ -210,13 +218,10 @@ function createSelectField(field, wrapper)
 
 		element.appendChild(optionElement);
 	});
-
-	AddProperties(field, element);
-
-	wrapper.appendChild(element);
+	return element;
 }
 
-function createInputOrTextareaField(field, wrapper)
+function createInputOrTextareaField(field)
 {
 	const element = document.createElement(field.Type === "textarea" ? "textarea" : "input");
 	element.name = field.Name;
@@ -225,19 +230,6 @@ function createInputOrTextareaField(field, wrapper)
 	if (field.Type !== "textarea")
 	{
 		element.type = field.Type;
-	}
-
-	if (field.hasOwnProperty('Properties'))
-	{
-		for (const key in field.Properties)
-		{
-			if (field.Properties.hasOwnProperty(key))
-			{
-				const [property, value] = field.Properties[key].split(':');
-
-				element[property] = value;
-			}
-		}
 	}
 
 	if (field.Placeholder)
@@ -252,36 +244,19 @@ function createInputOrTextareaField(field, wrapper)
 		else
 			element.value = field.Value;
 	}
-
-	AddProperties(field, element);
-
-	wrapper.appendChild(element);
+	return element;
 }
 
-function createButton(field, wrapper)
+function createButtonOrHidden(field)
 {
-	const element = document.createElement("button");
+	const element = document.createElement(field.Type === "hidden" ? "input" : "button");
 	element.type = field.Type;
 	element.name = field.Name;
+	element.id = field.Name;
 	element.textContent = field.Label;
-
-	AddProperties(field, element);
-
-	wrapper.appendChild(element);
+	return element;
 }
 
-function createHiddenField(field, wrapper)
-{
-	const element = document.createElement("input");
-	element.type = field.Type;
-	element.name = field.Name;
-	element.value = field.Value;
-
-	AddProperties(field, element);
-
-	wrapper.appendChild(element);
-	wrapper.style.display = 'none';
-}
 
 generateForm();
 

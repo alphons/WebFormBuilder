@@ -19,7 +19,7 @@ body
 {
 	width: 100%;
 	max-width: 400px;
-	background: #ffffff;
+	background: #fff;
 	padding: 2rem;
 	border-radius: 8px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -40,8 +40,7 @@ label
 	color: #333;
 }
 
-input:not([type="file"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]),
-select
+input:not([type="file"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]), select, textarea
 {
 	width: 100%;
 	padding: 0.75rem;
@@ -53,22 +52,15 @@ select
 	transition: all 0.3s ease;
 }
 
-	input:not([type="file"]):not([type="button"]):not([type="radio"]):not([type="checkbox"]):focus
-	select:focus
+	input:focus,
+	select:focus,
+	textarea:focus
 	{
 		border-color: #007bff;
 		outline: none;
-		background: #ffffff;
+		background: #fff;
 		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 	}
-
-
-input[type="file"]:hover
-{
-	background: #0056b3;
-	border-color: #218838;
-}
-
 
 input[type="color"]
 {
@@ -91,7 +83,7 @@ button
 	padding: 0.75rem;
 	font-size: 1rem;
 	font-weight: bold;
-	color: #ffffff;
+	color: #fff;
 	background: #007bff;
 	border: none;
 	border-radius: 4px;
@@ -100,10 +92,17 @@ button
 }
 
 	input[type="button"]:focus,
+	input[type="file"]:hover,
 	button:hover
 	{
 		background: #0056b3;
 	}
+
+input[type="file"]
+{
+	appearance: none;
+	-webkit-appearance: none;
+}
 
 	input[type="file"]::-webkit-file-upload-button
 	{
@@ -115,12 +114,6 @@ button
 		cursor: pointer;
 		color: white;
 	}
-
-input[type="file"]
-{
-	appearance: none;
-	-webkit-appearance: none;
-}
 
 div
 {
@@ -152,7 +145,6 @@ button[type="reset"]
 	margin-top: 0.1rem;
 }
 
-
 .tooltip-wrapper
 {
 	display: inline-block;
@@ -171,7 +163,7 @@ button[type="reset"]
 	height: 18px;
 	border-radius: 50%;
 	background-color: #007bff;
-	color: #ffffff;
+	color: #fff;
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 1;
@@ -213,13 +205,5 @@ textarea
 	color: #555;
 	background: #f9f9f9;
 	transition: all 0.3s ease;
-	resize: vertical; /* Maakt de textarea verticaal verstelbaar */
+	resize: vertical;
 }
-
-	textarea:focus
-	{
-		border-color: #007bff;
-		outline: none;
-		background: #ffffff;
-		box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-	}
