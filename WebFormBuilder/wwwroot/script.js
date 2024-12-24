@@ -70,10 +70,9 @@ function toPascalCase(str)
 		.replace(/(^\w|[\s-_]+\w)/g, match => match.replace(/[\s-_]/, '').toUpperCase());
 }
 
-async function generateForm(formId)
+async function generateForm(formContainer)
 {
 	const formConfig = await fetchFormConfig();
-	const formContainer = document.getElementById(formId);
 
 	const form = document.createElement("form");
 	form.id = "dynamicForm";
@@ -256,6 +255,56 @@ function createButtonOrHidden(field)
 	return element;
 }
 
+async function handleInputEvent(event)
+{
+	const inputElement = event.target;
+	const type = inputElement.type;
+	const name = inputElement.name;
+	const val = inputElement.value;
+	var state = "";
+	if (type === "checkbox")
+		state = inputElement.checked ? 'checked' : 'unchecked';
 
-generateForm("form1");
+	try
+	{
+		const response = await fetch('/api/SubmitValue',
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(
+			{
+				type: type,
+				name: name,
+				val: val,
+				state: state
+			})
+		});
 
+		if (response.ok)
+		{
+			const result = await response.json();
+			console.log('Success:', result);
+		}
+		else
+		{
+			console.error('Error:', response.statusText);
+		}
+	}
+	catch (error)
+	{
+		console.error("Error submitting form data:", error);
+	}
+}
+
+function initializeInputHandlers()
+{
+	const formContainer = document.getElementById('form1');
+
+	formContainer.addEventListener('input', handleInputEvent);
+
+	generateForm(formContainer);
+}
+
+document.addEventListener('DOMContentLoaded', initializeInputHandlers);
