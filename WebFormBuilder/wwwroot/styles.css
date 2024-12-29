@@ -248,26 +248,26 @@ body
 					background: #f0f0f0;
 				}
 
-.euro-wrapper
-{
-	display: inline-block !important;
-	white-space: nowrap;
-	position: relative;
-	left: -0.6rem;
-}
-
-	.euro-wrapper::before
+	.form-container .euro-wrapper
 	{
-		content: "\20AC";
-		font-weight: bold;
-		color: #555;
+		display: inline-block !important;
+		white-space: nowrap;
 		position: relative;
-		left: 1.5rem;
+		left: -0.6rem;
 	}
 
-	.euro-wrapper input
-	{
-		font-family: Courier New, Courier, monospace;
-		text-align: right;
-	}
+		.form-container .euro-wrapper::before
+		{
+			content: "\20AC";
+			font-weight: bold;
+			color: #555;
+			position: relative;
+			left: 1.5rem;
+		}
+
+		.form-container .euro-wrapper input
+		{
+			afont-family: Courier New, Courier, monospace;
+			text-align: right;
+		}
 
