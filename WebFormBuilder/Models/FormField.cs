@@ -6,7 +6,6 @@ namespace WebFormBuilder.Models;
 
 public class FormField
 {
-	[JsonConverter(typeof(JsonStringEnumConverter))]
 	public HtmlInputType? Type { get; set; }
 	public string Name { get; set; } = "Name";
 	public string? Label { get; set; } // can be "", when null it PascalCases Name

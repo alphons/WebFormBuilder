@@ -1,10 +1,14 @@
-﻿namespace WebFormBuilder.Models;
+﻿using System.Text.Json.Serialization;
 
+namespace WebFormBuilder.Models;
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum HtmlInputType
 {
 	Text,
 	Email,
 	Password,
+	Combobox,
 	Tel,
 	Url,
 	Number,
