@@ -96,23 +96,25 @@ function generateField(field, wrapper)
 	{
 		wrapper.style.display = 'none';
 	}
-	else if (field.Label)
+	else
 	{
-		const label = document.createElement("label");
-		if (field.Type == "checkbox" || field.Type == "radio")
-			label.htmlFor = field.Name+"_0";
-		else
-			label.htmlFor = field.Name;
-		label.textContent = field.Label;
-		wrapper.appendChild(label);
-
-		if (field.Tooltip)
+		if (field.Label)
 		{
-			const tooltip = createTooltip(field.Tooltip);
-			label.appendChild(tooltip);
+			const label = document.createElement("label");
+			if (field.Type == "checkbox" || field.Type == "radio")
+				label.htmlFor = field.Name + "_0";
+			else
+				label.htmlFor = field.Name;
+			label.textContent = field.Label;
+			wrapper.appendChild(label);
+
+			if (field.Tooltip)
+			{
+				const tooltip = createTooltip(field.Tooltip);
+				label.appendChild(tooltip);
+			}
 		}
 	}
-
 	var element;
 	switch (field.Type)
 	{
@@ -131,8 +133,11 @@ function generateField(field, wrapper)
 		case "reset":
 			element = createButtonOrHidden(field);
 			break;
+		case "euro":
+			element = createEuroField(field);
+			break;
 		default:
-			element = createInputOrTextareaField(field);
+			element = createInputField(field);
 			break;
 	}
 
@@ -150,6 +155,13 @@ function splitOnce(str, delimiter)
 
 function AddProperties(field, element)
 {
+	var el = element;
+	if (el.tagName === "DIV")
+		el = el.querySelector("input");
+
+	if (!el)
+		return;
+
 	if (field.Properties)
 	{
 		for (const key in field.Properties)
@@ -158,7 +170,7 @@ function AddProperties(field, element)
 			{
 				const [property, value] = splitOnce(field.Properties[key], '=');
 
-				value && (element[property] = value);
+				value && (el[property] = value);
 			}
 		}
 	}
@@ -222,6 +234,28 @@ function createSelectField(field)
 	return element;
 }
 
+function createEuroField(field)
+{
+	const eurowrapper = document.createElement("div");
+	eurowrapper.classList.add("euro-wrapper");
+
+	const input = document.createElement("input");
+	input.name = field.Name;
+	input.id = field.Name;
+	input.type = "number";
+
+	if (field.Placeholder)
+		input.placeholder = field.Placeholder;
+
+	if (field.Value)
+		input.value = field.Value;
+
+	eurowrapper.appendChild(input);
+
+	return eurowrapper;
+}
+
+
 
 function filterItems(query)
 {
@@ -257,7 +291,6 @@ function renderList(filteredItems, fieldName)
 
 	comboboxList.style.display = 'block';
 }
-
 
 function createComboboxField(field)
 {
@@ -296,7 +329,7 @@ function createComboboxField(field)
 }
 
 
-function createInputOrTextareaField(field)
+function createInputField(field)
 {
 	const element = document.createElement(field.Type === "textarea" ? "textarea" : "input");
 	element.name = field.Name;

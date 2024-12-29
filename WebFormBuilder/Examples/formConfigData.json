@@ -82,6 +82,14 @@
 		"Value": "30"
 	},
 	{
+		"Type": "Euro",
+		"Name": "price",
+		"Label": "Price",
+		"Placeholder": "0,00",
+		"Tooltip": "Provide a price in euros.",
+		"Properties": [ "step=0.01" ]
+	},
+	{
 		"Type": "Date",
 		"Name": "dob",
 		"Label": "Date of Birth",

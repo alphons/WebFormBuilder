@@ -13,6 +13,7 @@ public enum HtmlInputType
 	Url,
 	Number,
 	Range,
+	Euro,
 	Date,
 	Time,
 	DateTimeLocal,
