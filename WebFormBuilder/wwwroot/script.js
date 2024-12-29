@@ -327,9 +327,17 @@ function createButtonOrHidden(field)
 	element.type = field.Type;
 	element.name = field.Name;
 	element.id = field.Name;
-	if (field.Value && field.Type === "hidden")
-		element.value = field.Value;
-	element.textContent = field.Label;
+	if (field.Value)
+	{
+		if (field.Type === "hidden")
+			element.value = field.Value;
+		else
+			element.textContent = field.Value;
+	}
+	else
+	{
+		element.textContent = field.Label;
+	}
 	return element;
 }
 

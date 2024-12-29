@@ -161,7 +161,8 @@
 	{
 		"Type": "Reset",
 		"Name": "reset",
-		"Label": "Reset Form"
+		"Label": "Reset Form",
+		"Value": "Reset this Form"
 	},
 	{
 		"Type": "Button",
@@ -178,7 +179,8 @@
 	{
 		"Type": "Submit",
 		"Name": "submit",
-		"Label": "Register"
+		"Label": "Register",
+		"Value": "Submit Form"
 	}
 ]
 

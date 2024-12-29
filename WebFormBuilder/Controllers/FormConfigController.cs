@@ -35,7 +35,7 @@ public class FormConfigController : ControllerBase
 				Type = HtmlInputType.Button,
 				Name = "formConfigData",
 				Label = string.Empty,
-				Value = "Complete form"
+				Value = "All of the above"
 			});
 
 			listNav.Add(new FormField
