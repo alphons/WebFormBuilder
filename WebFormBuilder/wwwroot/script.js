@@ -267,6 +267,7 @@ function createComboboxField(field)
 	const comboboxInput = document.createElement("input");
 	comboboxInput.name = field.Name;
 	comboboxInput.id = field.Name;
+	comboboxInput.setAttribute('autocomplete', 'off'); 
 
 	const comboboxList = document.createElement("div");
 	comboboxList.id = "combobox-list";
