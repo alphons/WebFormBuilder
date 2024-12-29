@@ -1,0 +1,10 @@
+[
+	{
+		"Type": "File",
+		"Name": "Files",
+		"Label": "Choose a file",
+		"Placeholder": "Select a file",
+		"Tooltip": "Select a file please."
+	}
+]
+

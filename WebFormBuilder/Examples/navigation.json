@@ -1,0 +1,75 @@
+[
+	{
+		"Type": "Button",
+		"Name": "text",
+		"Label": "",
+		"Value": "Text"
+	},
+	{
+		"Type": "Button",
+		"Name": "password",
+		"Label": "",
+		"Value": "Password"
+	},
+	{
+		"Type": "Button",
+		"Name": "email",
+		"Label": "",
+		"Value": "Email"
+	},
+	{
+		"Type": "Button",
+		"Name": "combobox",
+		"Label": "",
+		"Value": "Combobox"
+	},
+	{
+		"Type": "Button",
+		"Name": "radio",
+		"Label": "",
+		"Value": "Radio"
+	},
+	{
+		"Type": "Button",
+		"Name": "checkbox",
+		"Label": "",
+		"Value": "Checkbox"
+	},
+	{
+		"Type": "Button",
+		"Name": "select",
+		"Label": "",
+		"Value": "Select"
+	},
+	{
+		"Type": "Button",
+		"Name": "file",
+		"Label": "",
+		"Value": "File"
+	},
+	{
+		"Type": "Button",
+		"Name": "textarea",
+		"Label": "",
+		"Value": "Textarea"
+	},
+	{
+		"Type": "Button",
+		"Name": "number",
+		"Label": "",
+		"Value": "Number Example"
+	},
+	{
+		"Type": "Button",
+		"Name": "formConfigData",
+		"Label": "",
+		"Value": "Complete form"
+	},
+	{
+		"Type": "Button",
+		"Name": "navigation",
+		"Label": "",
+		"Value": "This Navigation"
+	}
+]
+

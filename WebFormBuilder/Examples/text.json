@@ -1,0 +1,24 @@
+[
+	{
+		"Type": "text",
+		"Name": "text1"
+	},
+	{
+		"Type": "text",
+		"Name": "text2",
+		"Label": "",
+		"Value": "some value"
+	},
+	{
+		"Type": "text",
+		"Name": "text3",
+		"Tooltip": "type some text"
+	},
+	{
+		"Type": "text",
+		"Name": "text4",
+		"Label": "Some label",
+		"Placeholder": "Placeholders are good"
+	}
+]
+

@@ -1,0 +1,12 @@
+[
+	{
+		"Type": "Number",
+		"Name": "age",
+		"Label": "Age",
+		"Placeholder": "Enter your age",
+		"Tooltip": "Age in years.",
+		"Properties": [ "min=18", "max=88", "step=1" ],
+		"Value": "30"
+	}
+]
+

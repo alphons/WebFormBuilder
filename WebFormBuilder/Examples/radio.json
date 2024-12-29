@@ -1,0 +1,11 @@
+[
+	{
+		"Type": "Radio",
+		"Name": "gender",
+		"Label": null,
+		"Tooltip": "Select your gender.",
+		"Options": [ "Male", "Female", "Other" ],
+		"Value": "Male"
+	}
+]
+

@@ -1,0 +1,12 @@
+[
+	{
+		"Type": "Email",
+		"Name": "email",
+		"Label": "Email Address",
+		"Placeholder": "Enter your email address",
+		"Tooltip": "sending email.",
+		"Properties": [ "autocomplete=email" ],
+		"Value": "example@example.com"
+	}
+]
+

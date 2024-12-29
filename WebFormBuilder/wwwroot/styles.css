@@ -16,10 +16,11 @@
 body
 {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	ajustify-content: center;
+	aalign-items: center;
 	min-height: 100vh;
 	background: #f4f4f9;
+	padding:20px;
 }
 
 .form-container

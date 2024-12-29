@@ -1,0 +1,11 @@
+[
+	{
+		"Type": "Textarea",
+		"Name": "remark",
+		"Label": "Remark",
+		"Tooltip": "Any remarks...",
+		"Properties": [ "rows=4" ],
+		"Value": "1\n2\n"
+	}
+]
+

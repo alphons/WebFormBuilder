@@ -1,0 +1,12 @@
+[
+	{
+		"Type": "Select",
+		"Name": "country",
+		"Label": "Country",
+		"Tooltip": "Choose a country.",
+		"Options": [ "Netherlands", "Belgium", "Germany" ],
+		"Properties": [ "autocomplete=off" ],
+		"Value": "Belgium"
+	}
+]
+

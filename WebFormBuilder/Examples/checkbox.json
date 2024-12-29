@@ -1,0 +1,11 @@
+[
+	{
+		"Type": "Checkbox",
+		"Name": "hobbies",
+		"Label": "Hobbies",
+		"Tooltip": "Select hobbies.",
+		"Options": [ "Sports", "Music", "Reading" ],
+		"Value": "Music,Sports"
+	}
+]
+

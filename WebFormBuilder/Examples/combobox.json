@@ -1,0 +1,10 @@
+[
+	{
+		"Type": "Combobox",
+		"Name": "Fruit",
+		"Label": "Fruit",
+		"Tooltip": "Select fruit or make new",
+		"Options": [ "Appletje", "Banana", "Cherry", "Date", "Fig", "Grape", "Honeydew" ]
+	}
+]
+

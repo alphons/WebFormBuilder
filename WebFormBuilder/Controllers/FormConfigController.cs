@@ -9,11 +9,11 @@ namespace WebFormBuilder.Controllers;
 public class FormConfigController : ControllerBase
 {
 	[HttpGet]
-	public async Task<IActionResult> GetFormConfig()
+	public IActionResult GetFormConfig([FromQuery] string name)
 	{
 		List<FormField>? list = [];
 
-		var jsonFilePath = Path.Combine(AppContext.BaseDirectory, "formConfigData.json");
+		var jsonFilePath = Path.Combine(AppContext.BaseDirectory, "Examples", name + ".json");
 
 		if (!System.IO.File.Exists(jsonFilePath))
 			return NotFound();
@@ -21,15 +21,5 @@ public class FormConfigController : ControllerBase
 		var stream = new FileStream(jsonFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
 
 		return File(stream, "application/json");
-
-		//var jsonData = await System.IO.File.ReadAllTextAsync(jsonFilePath);
-
-		//return Content(jsonData, "application/json");
-
-		//list = JsonSerializer.Deserialize<List<FormField>>(jsonData);
-
-		// list ??= FormConfigData.FormFields;
-
-		//return Ok(list);
 	}
 }

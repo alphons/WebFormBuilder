@@ -1,8 +1,8 @@
-﻿async function fetchFormConfig()
+﻿async function fetchFormConfig(name)
 {
 	try
 	{
-		const response = await fetch('/api/FormConfig');
+		const response = await fetch('/api/FormConfig?name=' + name);
 
 		if (!response.ok)
 			throw new Error(`HTTP error! Status: ${response.status}`);
@@ -67,15 +67,14 @@ function createTooltip(text)
 function toPascalCase(str)
 {
 	return str
-		.replace(/(^\w|[\s-_]+\w)/g, match => match.replace(/[\s-_]/, '').toUpperCase());
+		.replace(/(^\w|[\s-_]+\w)/g, match => match.replace(/[\s-_]/, '')
+		.toUpperCase());
 }
 
-async function generateForm(formContainer)
+async function generateForm(formContainer, name, formConfig)
 {
-	const formConfig = await fetchFormConfig();
-
 	const form = document.createElement("form");
-	form.id = "dynamicForm";
+	form.id = name;
 	form.addEventListener("submit", submitFormData);
 
 	formConfig.forEach((field) =>
@@ -87,6 +86,7 @@ async function generateForm(formContainer)
 		form.appendChild(wrapper);
 	});
 
+	formContainer.replaceChildren();
 	formContainer.appendChild(form);
 }
 
@@ -327,6 +327,8 @@ function createButtonOrHidden(field)
 	element.type = field.Type;
 	element.name = field.Name;
 	element.id = field.Name;
+	if (field.Value && field.Type === "hidden")
+		element.value = field.Value;
 	element.textContent = field.Label;
 	return element;
 }
@@ -374,13 +376,37 @@ async function handleInputEvent(event)
 	}
 }
 
-function initializeInputHandlers()
+
+async function handleNavigationEvent(event)
 {
-	const formContainer = document.getElementById('form1');
+	event.preventDefault();
 
-	formContainer.addEventListener('input', handleInputEvent);
+	if (!event.target.name)
+		return;
 
-	generateForm(formContainer);
+	const formConfig = await fetchFormConfig(event.target.name);
+
+	document.getElementById("output").innerHTML = JSON.stringify(formConfig, null, 2);
+
+	const form1 = document.getElementById('form1');
+
+	form1.addEventListener('input', handleInputEvent);
+
+	generateForm(form1, "formDynamic", formConfig);
+
+	window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-document.addEventListener('DOMContentLoaded', initializeInputHandlers);
+
+document.addEventListener('DOMContentLoaded', async () =>
+{
+	const formConfig = await fetchFormConfig('navigation');
+
+	const navigation = document.getElementById('navigation');
+
+	navigation.addEventListener('click', handleNavigationEvent);
+
+	generateForm(navigation, "formNavigation", formConfig);
+
+	navigation.querySelector('input').click();
+});
