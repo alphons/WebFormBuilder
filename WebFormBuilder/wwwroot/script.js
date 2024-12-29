@@ -123,6 +123,9 @@ function generateField(field, wrapper)
 		case "select":
 			element = createSelectField(field);
 			break;
+		case "combobox":
+			element = createComboboxField(field);
+			break;
 		case "hidden":
 		case "submit":
 		case "reset":
@@ -218,6 +221,79 @@ function createSelectField(field)
 	});
 	return element;
 }
+
+
+function filterItems(query)
+{
+	const comboboxList = document.getElementById("combobox-list");
+	const items = comboboxList.dataset.items ? JSON.parse(comboboxList.dataset.items) : [];
+	return items.filter(item => item.toLowerCase().includes(query.toLowerCase()));
+}
+
+function renderList(filteredItems, fieldName)
+{
+	const comboboxList = document.getElementById("combobox-list");
+	comboboxList.innerHTML = '';
+	if (filteredItems.length === 0)
+	{
+		comboboxList.style.display = 'none';
+		return;
+	}
+
+	const comboboxInput = document.getElementById(fieldName);
+	filteredItems.forEach(item =>
+	{
+		const listItem = document.createElement('div');
+		listItem.textContent = item;
+		listItem.className = 'combobox-list-item';
+		listItem.addEventListener('click', () =>
+		{
+			comboboxList.style.display = 'none';
+			comboboxInput.value = item;
+			comboboxInput.dispatchEvent(new Event('input', { bubbles: true }));
+		});
+		comboboxList.appendChild(listItem);
+	});
+
+	comboboxList.style.display = 'block';
+}
+
+
+function createComboboxField(field)
+{
+	const combobox = document.createElement("div");
+	combobox.classList.add("combobox");
+
+	const comboboxInput = document.createElement("input");
+	comboboxInput.name = field.Name;
+	comboboxInput.id = field.Name;
+
+	const comboboxList = document.createElement("div");
+	comboboxList.id = "combobox-list";
+	comboboxList.classList.add("combobox-list");
+	comboboxList.dataset.items = JSON.stringify(field.Options);
+
+	combobox.appendChild(comboboxInput);
+	combobox.appendChild(comboboxList);
+
+	comboboxInput.addEventListener('input', () =>
+	{
+		const query = comboboxInput.value;
+		const filteredItems = filterItems(query);
+		renderList(filteredItems, field.Name);
+	});
+
+	document.addEventListener('click', event =>
+	{
+		if (!event.target.closest('.combobox'))
+		{
+			comboboxList.style.display = 'none';
+		}
+	});
+
+	return combobox;
+}
+
 
 function createInputOrTextareaField(field)
 {

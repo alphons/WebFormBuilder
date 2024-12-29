@@ -5,7 +5,7 @@
 		"Label": "UserName",
 		"Placeholder": "Enter your username",
 		"Tooltip": "This will be your unique identifier.",
-		"Properties": [ "autocomplete=username" , "required=yes" ],
+		"Properties": [ "autocomplete=username", "required=yes" ],
 		"Value": "JohnDoe"
 	},
 	{
@@ -24,6 +24,13 @@
 		"Placeholder": "Enter a secure password",
 		"Tooltip": "Use a strong password with at least 8 characters.",
 		"Value": "0ldP@ssW0rd!"
+	},
+	{
+		"Type": "Combobox",
+		"Name": "Fruit",
+		"Label": "Fruit",
+		"Tooltip": "Select your fruit or make new one.",
+		"Options": [ "Appletje", "Banana", "Cherry", "Date", "Fig", "Grape", "Honeydew" ]
 	},
 	{
 		"Type": "Radio",
@@ -71,7 +78,7 @@
 		"Label": "Age",
 		"Placeholder": "Enter your age",
 		"Tooltip": "Provide your age in years.",
-		"Properties": ["min=18", "max=120", "step=1"],
+		"Properties": [ "min=18", "max=120", "step=1" ],
 		"Value": "30"
 	},
 	{
@@ -160,7 +167,7 @@
 		"Type": "Button",
 		"Name": "custom_button",
 		"Label": "Custom Button",
-		"Value":  "Do not press me",
+		"Value": "Do not press me",
 		"Tooltip": "Click this button for custom action."
 	},
 	{
