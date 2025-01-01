@@ -1,4 +1,5 @@
-﻿
+﻿"use strict";
+
 export default function generateForm(formContainerId, name, formConfig)
 {
 	const formContainer = document.getElementById(formContainerId)
@@ -6,8 +7,10 @@ export default function generateForm(formContainerId, name, formConfig)
 	const form = document.createElement("form");
 	form.id = name;
 
+	var index = 0;
 	formConfig.forEach((field) =>
 	{
+		field.Name ??= `text${index}`, index++;
 		field.Type = (field.Type ?? "text").toLowerCase();
 		field.Label ??= toPascalCase(field.Name);
 		const wrapper = document.createElement("div");
