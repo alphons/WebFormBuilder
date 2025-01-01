@@ -1,50 +1,25 @@
-﻿async function fetchFormConfig(name)
+﻿
+export default function generateForm(formContainerId, name, formConfig)
 {
-	try
-	{
-		const response = await fetch('/api/FormConfig?name=' + name);
+	const formContainer = document.getElementById(formContainerId)
 
-		if (!response.ok)
-			throw new Error(`HTTP error! Status: ${response.status}`);
+	const form = document.createElement("form");
+	form.id = name;
 
-		const data = await response.json();
-		return data;
-	}
-	catch (error)
+	formConfig.forEach((field) =>
 	{
-		console.error("Error fetching form configuration:", error);
-		return [];
-	}
+		field.Type = (field.Type ?? "text").toLowerCase();
+		field.Label ??= toPascalCase(field.Name);
+		const wrapper = document.createElement("div");
+		generateField(field, wrapper);
+		form.appendChild(wrapper);
+	});
+
+	formContainer.replaceChildren();
+	formContainer.appendChild(form);
+
+	return form;
 }
-
-async function submitFormData(event)
-{
-	event.preventDefault();
-
-	try
-	{
-		const response = await fetch('/api/SubmitData',
-		{
-			method: 'POST',
-			body: new FormData(event.target)
-		});
-
-		if (response.ok)
-		{
-			const result = await response.json();
-			console.log('Success:', result);
-		} else
-		{
-			console.error('Error:', response.statusText);
-		}
-
-	}
-	catch (error)
-	{
-		console.error("Error submitting form data:", error);
-	}
-}
-
 function createTooltip(text)
 {
 	const tooltipWrapper = document.createElement("span");
@@ -69,25 +44,6 @@ function toPascalCase(str)
 	return str
 		.replace(/(^\w|[\s-_]+\w)/g, match => match.replace(/[\s-_]/, '')
 		.toUpperCase());
-}
-
-async function generateForm(formContainer, name, formConfig)
-{
-	const form = document.createElement("form");
-	form.id = name;
-	form.addEventListener("submit", submitFormData);
-
-	formConfig.forEach((field) =>
-	{
-		field.Type = (field.Type ?? "text").toLowerCase();
-		field.Label ??= toPascalCase(field.Name);
-		const wrapper = document.createElement("div");
-		generateField(field, wrapper);
-		form.appendChild(wrapper);
-	});
-
-	formContainer.replaceChildren();
-	formContainer.appendChild(form);
 }
 
 function generateField(field, wrapper)
@@ -375,80 +331,3 @@ function createButtonOrHidden(field)
 	return element;
 }
 
-async function handleInputEvent(event)
-{
-	const inputElement = event.target;
-	const type = inputElement.type;
-	const name = inputElement.name;
-	const val = inputElement.value;
-	var state = "";
-	if (type === "checkbox")
-		state = inputElement.checked ? 'checked' : 'unchecked';
-
-	try
-	{
-		const response = await fetch('/api/SubmitValue',
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(
-			{
-				type: type,
-				name: name,
-				val: val,
-				state: state
-			})
-		});
-
-		if (response.ok)
-		{
-			const result = await response.json();
-			console.log('Success:', result);
-		}
-		else
-		{
-			console.error('Error:', response.statusText);
-		}
-	}
-	catch (error)
-	{
-		console.error("Error submitting form data:", error);
-	}
-}
-
-
-async function handleNavigationEvent(event)
-{
-	event.preventDefault();
-
-	if (!event.target.name)
-		return;
-
-	const formConfig = await fetchFormConfig(event.target.name);
-
-	document.getElementById("output").innerHTML = JSON.stringify(formConfig, null, 2);
-
-	const form1 = document.getElementById('form1');
-
-	form1.addEventListener('input', handleInputEvent);
-
-	generateForm(form1, "formDynamic", formConfig);
-
-	window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-
-document.addEventListener('DOMContentLoaded', async () =>
-{
-	const formConfig = await fetchFormConfig('navigation');
-
-	const navigation = document.getElementById('navigation');
-
-	navigation.addEventListener('click', handleNavigationEvent);
-
-	generateForm(navigation, "formNavigation", formConfig);
-
-	navigation.querySelector('input').click();
-});
