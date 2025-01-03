@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-export default function generateForm(formContainerId, name, formConfig)
+function generateForm(formContainerId, name, formConfig)
 {
 	const formContainer = document.getElementById(formContainerId)
 

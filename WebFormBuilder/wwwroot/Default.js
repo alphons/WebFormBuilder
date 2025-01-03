@@ -1,7 +1,5 @@
 ﻿"use strict";
 
-import generateForm from './WebForm.js';
-
 async function fetchFormConfig(name)
 {
 	try

@@ -16,8 +16,6 @@
 body
 {
 	display: flex;
-	ajustify-content: center;
-	aalign-items: center;
 	min-height: 100vh;
 	background: #f4f4f9;
 	padding:20px;
@@ -267,7 +265,6 @@ body
 
 		.form-container .euro-wrapper input
 		{
-			afont-family: Courier New, Courier, monospace;
 			text-align: right;
 		}
 
