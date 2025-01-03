@@ -161,9 +161,7 @@
 	},
 	{
 		"Type": "Link",
-		"Name": "Hyperlink",
-		"Label": "This is a Hyperlink",
-		"Tooltip": "Nagigate away",
+		"Label": "",
 		"Properties": [ "href=https://www.dse.nl/" ],
 		"Value": "www.dse.nl"
 	},
