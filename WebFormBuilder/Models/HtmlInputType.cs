@@ -11,6 +11,7 @@ public enum HtmlInputType
 	Combobox,
 	Tel,
 	Url,
+	Link,
 	Number,
 	Range,
 	Euro,

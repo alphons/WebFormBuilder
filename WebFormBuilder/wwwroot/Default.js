@@ -53,6 +53,7 @@ async function handleInputEvent(event)
 	const type = inputElement.type;
 	const name = inputElement.name;
 	const val = inputElement.value;
+	const formname = inputElement.closest('form') && inputElement.closest('form').id || 'unknown';
 	var state = "";
 	if (type === "checkbox")
 		state = inputElement.checked ? 'checked' : 'unchecked';
@@ -67,6 +68,7 @@ async function handleInputEvent(event)
 			},
 			body: JSON.stringify(
 			{
+				formname: formname,
 				type: type,
 				name: name,
 				val: val,

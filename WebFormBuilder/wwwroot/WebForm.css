@@ -99,6 +99,7 @@ body
 
 		.form-container input[type="button"]:focus,
 		input[type="file"]:hover,
+		input[type="button"]:hover,
 		button:hover
 		{
 			background: #0056b3;

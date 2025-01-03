@@ -87,13 +87,14 @@ function generateField(field, wrapper)
 		case "combobox":
 			element = createComboboxField(field);
 			break;
+		case "euro":
+			element = createEuroField(field);
+			break;
 		case "hidden":
 		case "submit":
 		case "reset":
-			element = createButtonOrHidden(field);
-			break;
-		case "euro":
-			element = createEuroField(field);
+		case "link":
+			element = createButton(field);
 			break;
 		default:
 			element = createInputField(field);
@@ -314,7 +315,7 @@ function createInputField(field)
 	return element;
 }
 
-function createButtonOrHidden(field)
+function createButton(field)
 {
 	const element = document.createElement(field.Type === "hidden" ? "input" : "button");
 	element.type = field.Type;
@@ -330,6 +331,15 @@ function createButtonOrHidden(field)
 	else
 	{
 		element.textContent = field.Label;
+	}
+	if (field.Type === "link")
+	{
+		element.addEventListener("click", (event) =>
+		{
+			event.preventDefault();
+			const url = field.Properties.find(str => str.startsWith("href="))?.split("=")[1]?.trim();
+			if (url) window.location.href = url;
+		});
 	}
 	return element;
 }

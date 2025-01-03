@@ -160,6 +160,14 @@
 		"Value": "#ff0000"
 	},
 	{
+		"Type": "Link",
+		"Name": "Hyperlink",
+		"Label": "This is a Hyperlink",
+		"Tooltip": "Nagigate away",
+		"Properties": [ "href=https://www.dse.nl/" ],
+		"Value": "www.dse.nl"
+	},
+	{
 		"Type": "Image",
 		"Name": "submit_image",
 		"Label": "Submit Image",

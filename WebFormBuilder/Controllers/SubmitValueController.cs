@@ -10,6 +10,7 @@ public class SubmitValueController : ControllerBase
 
 	public class Input
 	{
+		public string? formname {  get; set; }
 		public string? type { get; set; }
 		public string? name { get; set; }
 		public string? val { get; set; }
@@ -20,7 +21,7 @@ public class SubmitValueController : ControllerBase
 	//[Consumes("multipart/form-data")]
 	public IActionResult ChangeValue([FromBody] Input input)
 	{
-		Debug.WriteLine($"name:{input.name} type:{input.type} val:{input.val} state:{input.state}");
+		Debug.WriteLine($"formname:{input.formname} name:{input.name} type:{input.type} val:{input.val} state:{input.state}");
 		return Ok(true);
 	}
 
