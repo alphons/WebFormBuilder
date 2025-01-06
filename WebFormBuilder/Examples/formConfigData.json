@@ -182,7 +182,7 @@
 		"Type": "Button",
 		"Name": "custom_button",
 		"Label": "Custom Button",
-		"Value": "Do not press me",
+		"Value": "Do not press me"
 		"Tooltip": "Click this button for custom action."
 	},
 	{

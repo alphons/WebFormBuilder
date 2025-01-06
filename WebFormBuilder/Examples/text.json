@@ -5,6 +5,10 @@
 	},
 	{
 		"Type": "text",
+		"Name": "text1"
+	},
+	{
+		"Type": "text",
 		"Name": "text2",
 		"Label": "",
 		"Value": "some value"

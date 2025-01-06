@@ -96,6 +96,28 @@ body
 		cursor: pointer;
 		transition: all 0.3s ease;
 	}
+		.form-container
+		button:disabled:hover,
+		button[disabled]:hover,
+		input[type="button"]:disabled:hover,
+		input[type="button"][disabled]:hover
+		{
+			background: #d6d6d6;
+			cursor: default;
+		}
+
+		.form-container
+		input[type="button"]:disabled,
+		input[type="submit"]:disabled,
+		input[type="reset"]:disabled,
+		button:disabled,
+		button[disabled]
+		{
+			color: #ccc;
+			background: #d6d6d6;
+			cursor: default;
+			opacity: 0.6;
+		}
 
 		.form-container input[type="button"]:focus,
 		input[type="file"]:hover,
