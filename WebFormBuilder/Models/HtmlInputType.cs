@@ -5,6 +5,8 @@ namespace WebFormBuilder.Models;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum HtmlInputType
 {
+	Unknown,
+	Form, // pseudo element
 	Text,
 	Email,
 	Password,

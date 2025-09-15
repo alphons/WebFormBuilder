@@ -17,10 +17,20 @@ public class FormConfigController : ControllerBase
 
 		if (name == "navigation")
 		{
-			var listNav = new List<FormField>();
+			List<FormField> listNav = [];
+
+			listNav.Add(new FormField
+			{
+				Type = HtmlInputType.Form,
+				Name = "formNavigation",
+				Properties = ["action=/api/SubmitData", "method=post", "change=/api/SubmitValue"]
+			});
+
 
 			foreach (HtmlInputType type in Enum.GetValues(typeof(HtmlInputType)))
 			{
+				if (type == HtmlInputType.Unknown || type == HtmlInputType.Form)
+					continue;
 				listNav.Add(new FormField
 				{
 					Type = HtmlInputType.Button,

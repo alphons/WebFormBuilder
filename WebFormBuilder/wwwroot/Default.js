@@ -25,7 +25,8 @@ async function submitFormData(event)
 
 	try
 	{
-		const response = await fetch('/api/SubmitData',
+		const form = event.target;
+		const response = await fetch(form.action,
 			{
 				method: 'POST',
 				body: new FormData(event.target)
@@ -53,14 +54,14 @@ async function handleInputEvent(event)
 	const type = inputElement.type;
 	const name = inputElement.name;
 	const val = inputElement.value;
-	const formname = inputElement.closest('form') && inputElement.closest('form').id || 'unknown';
+	const form = inputElement.closest('form');
 	var state = "";
 	if (type === "checkbox")
 		state = inputElement.checked ? 'checked' : 'unchecked';
 
 	try
 	{
-		const response = await fetch('/api/SubmitValue',
+		const response = await fetch(form.change,
 		{
 			method: 'POST',
 			headers: {
@@ -68,7 +69,7 @@ async function handleInputEvent(event)
 			},
 			body: JSON.stringify(
 			{
-				formname: formname,
+				formname: form.id,
 				type: type,
 				name: name,
 				val: val,
@@ -104,7 +105,7 @@ async function handleNavigationEvent(event)
 
 	document.getElementById("output").innerHTML = JSON.stringify(formConfig, null, 2);
 
-	const form = generateForm("formcontainer", "formDynamic", formConfig);
+	const form = generateForm("formcontainer", formConfig);
 
 	form.addEventListener('input', handleInputEvent);
 
@@ -113,12 +114,12 @@ async function handleNavigationEvent(event)
 	window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-
+// shows navigation buttons of all possible input types
 document.addEventListener('DOMContentLoaded', async () =>
 {
 	const formConfig = await fetchFormConfig('navigation');
 
-	const form = generateForm("navcontainer", "formNavigation", formConfig);
+	const form = generateForm("navcontainer", formConfig);
 
 	form.addEventListener('click', handleNavigationEvent);
 

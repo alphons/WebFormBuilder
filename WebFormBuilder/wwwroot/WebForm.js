@@ -27,7 +27,7 @@
 		const type = inputElement.type;
 		const name = inputElement.name;
 		const val = inputElement.value;
-		const formname = inputElement.closest('form') && inputElement.closest('form').id || 'unknown';
+		const form = inputElement.closest('form');
 		var state = "";
 		if (type === "checkbox")
 			state = inputElement.checked ? 'checked' : 'unchecked';
@@ -36,7 +36,7 @@
 		{
 			return await netproxyasync(ValueUrl,
 				{
-					formname: formname,
+					formname: form.id,
 					type: type,
 					name: name,
 					val: val,
@@ -48,15 +48,32 @@
 			console.error("Error submitting form data:", error);
 		}
 	}
-	window.generateForm = function generateForm(formContainerId, name, formConfig, submitFormUrl, submitValueUrl)
+	window.generateForm = function generateForm(formContainerId, formConfig, submitFormUrl, submitValueUrl)
 	{
 		const formContainer = document.getElementById(formContainerId)
 
-		const form = document.createElement("form");
-		form.id = name;
+		const formElement = formConfig.find(element => element.Type === 'Form');
 
-		FormUrl = submitFormUrl;
-		ValueUrl = submitValueUrl;
+		const form = document.createElement("form");
+
+		if (formElement)
+		{
+			formElement.Properties.forEach(element => 
+			{
+				const [key, value] = element.split("=");
+				if (key && value)
+					form[key] = value;
+			});
+			form.id = formElement.Name;
+			FormUrl = form.action;
+			ValueUrl = form.change;
+		}
+		else
+		{
+			form.id = "dynamicForm";
+			FormUrl = submitFormUrl;
+			ValueUrl = submitValueUrl;
+		}
 
 		var index = 0;
 		formConfig.forEach((field) =>
@@ -108,6 +125,8 @@
 
 	function generateField(field, wrapper)
 	{
+		if (field.Type === "form")
+			return;
 		if (field.Type === "hidden")
 		{
 			wrapper.style.display = 'none';

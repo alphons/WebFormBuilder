@@ -1,5 +1,10 @@
 [
 	{
+		"Type": "Form",
+		"Name": "FormName1",
+		"Properties": [ "action=/api/SubmitData", "method=post", "change=/api/SubmitValue" ]
+	},
+	{
 		"Type": "Text",
 		"Name": "username",
 		"Label": "UserName",
