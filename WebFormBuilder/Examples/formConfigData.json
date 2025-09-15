@@ -1,205 +1,216 @@
-[
-	{
-		"Type": "Form",
-		"Name": "FormName1",
-		"Properties": [ "action=/api/SubmitData", "method=post", "change=/api/SubmitValue" ]
-	},
-	{
-		"Type": "Text",
-		"Name": "username",
-		"Label": "UserName",
-		"Placeholder": "Enter your username",
-		"Tooltip": "This will be your unique identifier.",
-		"Properties": ["autocomplete=username", "required=yes" ],
-		"Value": "JohnDoe"
-	},
-	{
-		"Type": "Email",
-		"Name": "email",
-		"Label": "Email Address",
-		"Placeholder": "Enter your email address",
-		"Tooltip": "We will send important updates to this email.",
-		"Properties": [ "autocomplete=email" , "hidden=hidden" ],
-		"Value": "example@example.com"
-	},
-	{
-		"Type": "Password",
-		"Name": "password",
-		"Label": "Password",
-		"Placeholder": "Enter a secure password",
-		"Tooltip": "Use a strong password with at least 8 characters.",
-		"Value": "0ldP@ssW0rd!"
-	},
-	{
-		"Type": "Combobox",
-		"Name": "Fruit",
-		"Label": "Fruit",
-		"Tooltip": "Select your fruit or make new one.",
-		"Options": [ "Appletje", "Banana", "Cherry", "Date", "Fig", "Grape", "Honeydew" ]
-	},
-	{
-		"Type": "Radio",
-		"Name": "gender",
-		"Label": null,
-		"Tooltip": "Select your gender.",
-		"Options": [ "Male", "Female", "Other" ],
-		"Value": "Male"
-	},
-	{
-		"Type": "Checkbox",
-		"Name": "hobbies",
-		"Label": "Hobbies",
-		"Tooltip": "Select all hobbies that apply to you.",
-		"Options": [ "Sports", "Music", "Reading" ],
-		"Value": "Music,Sports"
-	},
-	{
-		"Type": "Select",
-		"Name": "country",
-		"Label": "Country",
-		"Tooltip": "Choose the country you currently reside in.",
-		"Options": [ "Netherlands", "Belgium", "Germany" ],
-		"Properties": [ "autocomplete=off" ],
-		"Value": "Belgium"
-	},
-	{
-		"Type": "File",
-		"Name": "Files",
-		"Label": "Choose a file",
-		"Placeholder": "Select a file",
-		"Tooltip": "Select a file please."
-	},
-	{
-		"Type": "Textarea",
-		"Name": "remark",
-		"Label": "Remark",
-		"Tooltip": "Any remarks to be made, do it here.",
-		"Properties": [ "rows=4" ],
-		"Value": "1\n2\n"
-	},
-	{
-		"Type": "Number",
-		"Name": "age",
-		"Label": "Age",
-		"Placeholder": "Enter your age",
-		"Tooltip": "Provide your age in years.",
-		"Properties": [ "min=18", "max=120", "step=1" ],
-		"Value": "30"
-	},
-	{
-		"Type": "Euro",
-		"Name": "price",
-		"Label": "Price",
-		"Placeholder": "0,00",
-		"Tooltip": "Provide a price in euros.",
-		"Properties": [ "step=0.01" ]
-	},
-	{
-		"Type": "Date",
-		"Name": "dob",
-		"Label": "Date of Birth",
-		"Placeholder": "Select your date of birth",
-		"Tooltip": "Pick your birthdate from the calendar.",
-		"Properties": [ "min=1900-01-01", "max=2024-12-31" ],
-		"Value": "1990-01-01"
-	},
-	{
-		"Type": "Tel",
-		"Name": "phone",
-		"Label": "Phone Number",
-		"Placeholder": "Enter your phone number",
-		"Tooltip": "Provide your contact number.",
-		"Properties": [ "autocomplete=phone" ],
-		"Value": "123-456-7890"
-	},
-	{
-		"Type": "Url",
-		"Name": "website",
-		"Label": "Website",
-		"Placeholder": "Enter your website",
-		"Tooltip": "Provide the URL of your website.",
-		"Value": "https://example.com"
-	},
-	{
-		"Type": "Range",
-		"Name": "satisfaction",
-		"Label": "Satisfaction Level",
-		"Tooltip": "Rate your satisfaction from 0 to 9.",
-		"Properties": [ "min=0", "max=9", "step=1" ],
-		"Value": "5"
-	},
-	{
-		"Type": "Time",
-		"Name": "meeting_time",
-		"Label": "Meeting Time",
-		"Placeholder": "Select a time",
-		"Tooltip": "Choose your preferred meeting time.",
-		"Value": "14:00"
-	},
-	{
-		"Type": "DateTimeLocal",
-		"Name": "appointment",
-		"Label": "Appointment Date & Time",
-		"Tooltip": "Select the date and time for your appointment.",
-		"Value": "2024-11-30T10:00"
-	},
-	{
-		"Type": "Month",
-		"Name": "birth_month",
-		"Label": "Birth Month",
-		"Tooltip": "Select your birth month.",
-		"Value": "1990-01"
-	},
-	{
-		"Type": "Week",
-		"Name": "work_week",
-		"Label": "Work Week",
-		"Tooltip": "Select your preferred work week.",
-		"Value": "2024-W01"
-	},
-	{
-		"Type": "Color",
-		"Name": "fav_color",
-		"Label": "Favorite Color",
-		"Tooltip": "Pick your favorite color.",
-		"Value": "#ff0000"
-	},
-	{
-		"Type": "Link",
-		"Label": "",
-		"Properties": [ "href=https://www.dse.nl/" ],
-		"Value": "www.dse.nl"
-	},
-	{
-		"Type": "Image",
-		"Name": "submit_image",
-		"Label": "Submit Image",
-		"Tooltip": "Click to submit via image button.",
-		"Value": "/cat.gif"
-	},
-	{
-		"Type": "Reset",
-		"Name": "reset",
-		"Label": "Reset Form",
-		"Value": "Reset this Form"
-	},
-	{
-		"Type": "Button",
-		"Name": "custom_button",
-		"Label": "Custom Button",
-		"Value": "Do not press me",
-		"Tooltip": "Click this button for custom action."
-	},
-	{
-		"Type": "Hidden",
-		"Name": "hidden_field",
-		"Value": "bfbed3d6-ac9d-4451-bb0f-025d043974d6"
-	},
-	{
-		"Type": "Submit",
-		"Name": "submit",
-		"Label": "Register",
-		"Value": "Submit Form"
-	}
-]
+{
+	"HtmlHeader": "<h1>Dit is een goede header</h1>",
+	"Action": "/api/SubmitForm",
+	"Change": "/api/SubmitValue",
+	"FieldSets": [
+		{
+			"Id": 1,
+			"Legend": "Examples",
+			"FormFields": [
+				{
+					"Type": "Form",
+					"Name": "FormName1",
+					"Properties": [ "action=/api/SubmitData", "method=post", "change=/api/SubmitValue" ]
+				},
+				{
+					"Type": "Text",
+					"Name": "username",
+					"Label": "UserName",
+					"Placeholder": "Enter your username",
+					"Tooltip": "This will be your unique identifier.",
+					"Properties": [ "autocomplete=username", "required=yes" ],
+					"Value": "JohnDoe"
+				},
+				{
+					"Type": "Email",
+					"Name": "email",
+					"Label": "Email Address",
+					"Placeholder": "Enter your email address",
+					"Tooltip": "We will send important updates to this email.",
+					"Properties": [ "autocomplete=email", "hidden=hidden" ],
+					"Value": "example@example.com"
+				},
+				{
+					"Type": "Password",
+					"Name": "password",
+					"Label": "Password",
+					"Placeholder": "Enter a secure password",
+					"Tooltip": "Use a strong password with at least 8 characters.",
+					"Value": "0ldP@ssW0rd!"
+				},
+				{
+					"Type": "Combobox",
+					"Name": "Fruit",
+					"Label": "Fruit",
+					"Tooltip": "Select your fruit or make new one.",
+					"Options": [ "Appletje", "Banana", "Cherry", "Date", "Fig", "Grape", "Honeydew" ]
+				},
+				{
+					"Type": "Radio",
+					"Name": "gender",
+					"Label": null,
+					"Tooltip": "Select your gender.",
+					"Options": [ "Male", "Female", "Other" ],
+					"Value": "Male"
+				},
+				{
+					"Type": "Checkbox",
+					"Name": "hobbies",
+					"Label": "Hobbies",
+					"Tooltip": "Select all hobbies that apply to you.",
+					"Options": [ "Sports", "Music", "Reading" ],
+					"Value": "Music,Sports"
+				},
+				{
+					"Type": "Select",
+					"Name": "country",
+					"Label": "Country",
+					"Tooltip": "Choose the country you currently reside in.",
+					"Options": [ "Netherlands", "Belgium", "Germany" ],
+					"Properties": [ "autocomplete=off" ],
+					"Value": "Belgium"
+				},
+				{
+					"Type": "File",
+					"Name": "Files",
+					"Label": "Choose a file",
+					"Placeholder": "Select a file",
+					"Tooltip": "Select a file please."
+				},
+				{
+					"Type": "Textarea",
+					"Name": "remark",
+					"Label": "Remark",
+					"Tooltip": "Any remarks to be made, do it here.",
+					"Properties": [ "rows=4" ],
+					"Value": "1\n2\n"
+				},
+				{
+					"Type": "Number",
+					"Name": "age",
+					"Label": "Age",
+					"Placeholder": "Enter your age",
+					"Tooltip": "Provide your age in years.",
+					"Properties": [ "min=18", "max=120", "step=1" ],
+					"Value": "30"
+				},
+				{
+					"Type": "Euro",
+					"Name": "price",
+					"Label": "Price",
+					"Placeholder": "0,00",
+					"Tooltip": "Provide a price in euros.",
+					"Properties": [ "step=0.01" ]
+				},
+				{
+					"Type": "Date",
+					"Name": "dob",
+					"Label": "Date of Birth",
+					"Placeholder": "Select your date of birth",
+					"Tooltip": "Pick your birthdate from the calendar.",
+					"Properties": [ "min=1900-01-01", "max=2024-12-31" ],
+					"Value": "1990-01-01"
+				},
+				{
+					"Type": "Tel",
+					"Name": "phone",
+					"Label": "Phone Number",
+					"Placeholder": "Enter your phone number",
+					"Tooltip": "Provide your contact number.",
+					"Properties": [ "autocomplete=phone" ],
+					"Value": "123-456-7890"
+				},
+				{
+					"Type": "Url",
+					"Name": "website",
+					"Label": "Website",
+					"Placeholder": "Enter your website",
+					"Tooltip": "Provide the URL of your website.",
+					"Value": "https://example.com"
+				},
+				{
+					"Type": "Range",
+					"Name": "satisfaction",
+					"Label": "Satisfaction Level",
+					"Tooltip": "Rate your satisfaction from 0 to 9.",
+					"Properties": [ "min=0", "max=9", "step=1" ],
+					"Value": "5"
+				},
+				{
+					"Type": "Time",
+					"Name": "meeting_time",
+					"Label": "Meeting Time",
+					"Placeholder": "Select a time",
+					"Tooltip": "Choose your preferred meeting time.",
+					"Value": "14:00"
+				},
+				{
+					"Type": "DateTimeLocal",
+					"Name": "appointment",
+					"Label": "Appointment Date & Time",
+					"Tooltip": "Select the date and time for your appointment.",
+					"Value": "2024-11-30T10:00"
+				},
+				{
+					"Type": "Month",
+					"Name": "birth_month",
+					"Label": "Birth Month",
+					"Tooltip": "Select your birth month.",
+					"Value": "1990-01"
+				},
+				{
+					"Type": "Week",
+					"Name": "work_week",
+					"Label": "Work Week",
+					"Tooltip": "Select your preferred work week.",
+					"Value": "2024-W01"
+				},
+				{
+					"Type": "Color",
+					"Name": "fav_color",
+					"Label": "Favorite Color",
+					"Tooltip": "Pick your favorite color.",
+					"Value": "#ff0000"
+				},
+				{
+					"Type": "Link",
+					"Label": "",
+					"Properties": [ "href=https://www.dse.nl/" ],
+					"Value": "www.dse.nl"
+				},
+				{
+					"Type": "Image",
+					"Name": "submit_image",
+					"Label": "Submit Image",
+					"Tooltip": "Click to submit via image button.",
+					"Value": "/cat.gif"
+				},
+				{
+					"Type": "Reset",
+					"Name": "reset",
+					"Label": "Reset Form",
+					"Value": "Reset this Form"
+				},
+				{
+					"Type": "Button",
+					"Name": "custom_button",
+					"Label": "Custom Button",
+					"Value": "Do not press me",
+					"Tooltip": "Click this button for custom action."
+				},
+				{
+					"Type": "Hidden",
+					"Name": "hidden_field",
+					"Value": "bfbed3d6-ac9d-4451-bb0f-025d043974d6"
+				},
+				{
+					"Type": "Submit",
+					"Name": "submit",
+					"Label": "Register",
+					"Value": "Submit Form"
+				}
+			]
+		}
+	]
+}
 

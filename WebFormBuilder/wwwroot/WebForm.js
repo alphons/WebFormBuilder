@@ -52,31 +52,14 @@
 	{
 		const formContainer = document.getElementById(formContainerId)
 
-		const formElement = formConfig.find(element => element.Type === 'Form');
-
 		const form = document.createElement("form");
 
-		if (formElement)
-		{
-			formElement.Properties.forEach(element => 
-			{
-				const [key, value] = element.split("=");
-				if (key && value)
-					form[key] = value;
-			});
-			form.id = formElement.Name;
-			FormUrl = form.action;
-			ValueUrl = form.change;
-		}
-		else
-		{
-			form.id = "dynamicForm";
-			FormUrl = submitFormUrl;
-			ValueUrl = submitValueUrl;
-		}
+		form.id = "formDynamic"; // TODO
+		FormUrl = formConfig.Action;
+		ValueUrl = formConfig.Change;
 
 		var index = 0;
-		formConfig.forEach((field) =>
+		formConfig.FieldSets[0].FormFields.forEach((field) =>
 		{
 			field.Name ??= `text${index}`, index++;
 			field.Type = (field.Type ?? "text").toLowerCase();

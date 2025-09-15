@@ -11,36 +11,24 @@ public class FormConfigController : ControllerBase
 	[HttpGet]
 	public async Task<IActionResult> GetFormConfig([FromQuery] string name)
 	{
-		string jsonFilePath;
-
-		FileStream stream;
-
 		if (name == "navigation")
 		{
-			List<FormField> listNav = [];
-
-			listNav.Add(new FormField
-			{
-				Type = HtmlInputType.Form,
-				Name = "formNavigation",
-				Properties = ["action=/api/SubmitData", "method=post", "change=/api/SubmitValue"]
-			});
-
+			List<FormField> formFields = [];
 
 			foreach (HtmlInputType type in Enum.GetValues(typeof(HtmlInputType)))
 			{
 				if (type == HtmlInputType.Unknown || type == HtmlInputType.Form)
 					continue;
-				listNav.Add(new FormField
+				formFields.Add(new FormField
 				{
 					Type = HtmlInputType.Button,
-					Name= type.ToString().ToLower(),
+					Name = type.ToString().ToLower(),
 					Label = string.Empty,
 					Value = $"Example {type}"
 				});
 			}
 
-			listNav.Add(new FormField
+			formFields.Add(new FormField
 			{
 				Type = HtmlInputType.Button,
 				Name = "formConfigData",
@@ -48,7 +36,7 @@ public class FormConfigController : ControllerBase
 				Value = "All of the above"
 			});
 
-			listNav.Add(new FormField
+			formFields.Add(new FormField
 			{
 				Type = HtmlInputType.Button,
 				Name = "navigation",
@@ -56,11 +44,26 @@ public class FormConfigController : ControllerBase
 				Value = "This Navigation"
 			});
 
-			return Ok(listNav);
+			var form1 = new Form()
+			{
+				HtmlHeader = "<h3>Example</h3>",
+				Action = "/api/SubmitData",
+				Change = "/api/SubmitValue",
+				FieldSets = [new FieldSet() 
+				{ 
+					Id = 0, 
+					Legend = "Of the fall", 
+					FormFields = formFields 
+				}]
+			};
+
+			return Ok(form1);
 		}
 
 
-		jsonFilePath = Path.Combine(AppContext.BaseDirectory, "Examples", name + ".json");
+		var jsonFilePath = Path.Combine(AppContext.BaseDirectory, "Examples", name + ".json");
+
+		FileStream stream;
 
 		if (System.IO.File.Exists(jsonFilePath))
 		{
@@ -80,13 +83,26 @@ public class FormConfigController : ControllerBase
 		var list = await JsonSerializer.DeserializeAsync<List<FormField>>(stream) ?? [];
 
 		stream.Dispose();
-		
-		if(!Enum.TryParse(name, ignoreCase: true, out HtmlInputType typeEnum))
+
+		if (!Enum.TryParse(name, ignoreCase: true, out HtmlInputType typeEnum))
 			return NotFound();
 
 		list.RemoveAll(x => x.Type != typeEnum);
 
-		return Ok(list);
+		var form2 = new Form()
+		{
+			HtmlHeader = "<h3>Example</h3>",
+			Action = "/api/SubmitData",
+			Change = "/api/SubmitValue",
+			FieldSets = [new FieldSet()
+				{
+					Id = 0,
+					Legend = "Of the fall",
+					FormFields = list
+				}]
+		};
+
+		return Ok(form2);
 
 	}
 }

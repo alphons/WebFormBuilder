@@ -1,33 +1,43 @@
-[
-	{
-		"Type": "Form",
-		"Name": "FormName3",
-		"Properties": [ "action=/api/SubmitData", "method=post", "change=/api/SubmitValue" ]
-	},
-	{
-		"Type": "text",
-		"Name": "text1"
-	},
-	{
-		"Type": "text",
-		"Name": "text2"
-	},
-	{
-		"Type": "text",
-		"Name": "text3",
-		"Label": "",
-		"Value": "some value"
-	},
-	{
-		"Type": "text",
-		"Name": "text4",
-		"Tooltip": "type some text"
-	},
-	{
-		"Type": "text",
-		"Name": "text5",
-		"Label": "Some label",
-		"Placeholder": "Placeholders are good"
-	}
-]
-
+{
+	"HtmlHeader": "<h1>Dit is een goede header</h1>",
+	"Action": "/api/SubmitForm",
+	"Change": "/api/SubmitValue",
+	"FieldSets": [
+		{
+			"Id": 1,
+			"Legend": "Naw gegevens",
+			"FormFields": [
+				{
+					"Type": "Form",
+					"Name": "FormName3",
+					"Properties": [ "action=/api/SubmitData", "method=post", "change=/api/SubmitValue" ]
+				},
+				{
+					"Type": "text",
+					"Name": "text1"
+				},
+				{
+					"Type": "text",
+					"Name": "text2"
+				},
+				{
+					"Type": "text",
+					"Name": "text3",
+					"Label": "",
+					"Value": "some value"
+				},
+				{
+					"Type": "text",
+					"Name": "text4",
+					"Tooltip": "type some text"
+				},
+				{
+					"Type": "text",
+					"Name": "text5",
+					"Label": "Some label",
+					"Placeholder": "Placeholders are good"
+				}
+			]
+		}
+	]	
+}
