@@ -10,7 +10,7 @@
 		"Label": "UserName",
 		"Placeholder": "Enter your username",
 		"Tooltip": "This will be your unique identifier.",
-		"Properties": [ "autocomplete=username", "required=yes" ],
+		"Properties": ["autocomplete=username", "required=yes" ],
 		"Value": "JohnDoe"
 	},
 	{
@@ -19,7 +19,7 @@
 		"Label": "Email Address",
 		"Placeholder": "Enter your email address",
 		"Tooltip": "We will send important updates to this email.",
-		"Properties": [ "autocomplete=email" ],
+		"Properties": [ "autocomplete=email" , "hidden=hidden" ],
 		"Value": "example@example.com"
 	},
 	{

@@ -1,8 +1,20 @@
-﻿using System.Text.Json.Serialization;
+﻿namespace WebFormBuilder.Models;
 
-namespace WebFormBuilder.Models;
+public class Form
+{
+	public string HtmlHeader { get; set; } = string.Empty;
+	public string Action { get; set; } = string.Empty;
+	public string Change { get; set; } = string.Empty;
+	public List<FieldSet> FieldSets { get; set; } = [];
+}
 
 
+public class FieldSet
+{
+	public int Id { get; set; }
+	public string Legend { get; set; } = string.Empty;
+	public List<FormField> FormFields { get; set; } = [];
+}
 
 public class FormField
 {

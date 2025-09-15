@@ -1,0 +1,41 @@
+{
+    "HtmlHeader": "<h1>Dit is een goede header</h1>",
+    "Action": "/api/SubmitForm",
+    "Change": "/api/SubmitValue",
+    "FieldSets": [
+        {
+            "Id": 1,
+            "Legend": "Naw gegevens",
+            "FormFields": [
+                {
+                    "Name": "Naam"
+                },
+                {
+                    "Name": "Adres"
+                },
+                {
+                    "Name": "Woonplaats"
+                }
+            ]
+        },
+        {
+            "Id": 2,
+            "Legend": "Partner keuze",
+            "FormFields": [
+                {
+                    "Type": "Radio",
+                    "Name": "Partner"
+                }
+            ]
+        },
+        {
+            "Id": 3,
+            "Legend": "Partner gegevens",
+            "FormFields": [
+                {
+                    "Name": "PartnerNaam"
+                }
+            ]
+        }
+    ]
+}

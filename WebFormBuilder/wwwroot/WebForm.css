@@ -150,6 +150,13 @@ body
 		flex-direction: column;
 	}
 
+	.form-container fieldset
+	{
+		display: flex;
+		flex-direction: column;
+		border:none;
+	}
+
 	.form-container .radio-group,
 	.form-container .checkbox-group
 	{

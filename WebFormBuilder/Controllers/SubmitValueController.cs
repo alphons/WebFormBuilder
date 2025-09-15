@@ -18,7 +18,6 @@ public class SubmitValueController : ControllerBase
 	}
 
 	[HttpPost]
-	//[Consumes("multipart/form-data")]
 	public IActionResult ChangeValue([FromBody] Input input)
 	{
 		Debug.WriteLine($"formname:{input.formname} name:{input.name} type:{input.type} val:{input.val} state:{input.state}");

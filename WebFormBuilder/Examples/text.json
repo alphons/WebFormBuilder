@@ -10,22 +10,22 @@
 	},
 	{
 		"Type": "text",
-		"Name": "text1"
+		"Name": "text2"
 	},
 	{
 		"Type": "text",
-		"Name": "text2",
+		"Name": "text3",
 		"Label": "",
 		"Value": "some value"
 	},
 	{
 		"Type": "text",
-		"Name": "text3",
+		"Name": "text4",
 		"Tooltip": "type some text"
 	},
 	{
 		"Type": "text",
-		"Name": "text4",
+		"Name": "text5",
 		"Label": "Some label",
 		"Placeholder": "Placeholders are good"
 	}
