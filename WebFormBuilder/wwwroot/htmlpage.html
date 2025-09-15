@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" href="WebForm.css">
+</head>
+<body>
+
+<div id="formcontainer" class="form-container">
+	<form id="ExampleForm"action="/api/SubmitForm">
+		<h1>Dit is een example form</h1>
+		<div>
+			<div>
+				<label for="Naam">Naam</label>
+				<input name="Naam" id="Naam" type="text">
+			</div><div>
+				<label for="Adres">Adres</label>
+				<input name="Adres" id="Adres" type="text">
+			</div>
+			<div>
+				<label for="Woonplaats">Woonplaats</label><input name="Woonplaats" id="Woonplaats" type="text">
+			</div>
+			<div>
+				<label for="Partner_0">Partner</label><div class="radio-group">
+					<div>
+						<input type="radio" name="Partner" value="Ja" id="Partner_0"><label for="Partner_0">Ja</label>
+					</div>
+					<div><input type="radio" name="Partner" value="Nee" id="Partner_1"><label for="Partner_1">Nee</label></div>
+					<div>
+						<input type="radio" name="Partner" value="Weet niet" id="Partner_2"><label for="Partner_2">Weet niet</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<fieldset hidden="">
+			<div>
+				<label for="PartnerNaam">PartnerNaam</label>
+				<input name="PartnerNaam" id="PartnerNaam" type="text">
+			</div>
+		</fieldset>
+	</form>
+</div>
+</body>
+</html>

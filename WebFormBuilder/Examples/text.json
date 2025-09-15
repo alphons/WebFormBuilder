@@ -1,5 +1,6 @@
 {
-	"HtmlHeader": "<h1>Dit is een goede header</h1>",
+	"HtmlHeader": "<h1>Textbox example</h1><p>Textboxen zijn cool</p><br/>",
+	"Name": "TextBoxExample",
 	"Action": "/api/SubmitForm",
 	"Change": "/api/SubmitValue",
 	"FieldSets": [
@@ -7,11 +8,6 @@
 			"Id": 1,
 			"Legend": "Naw gegevens",
 			"FormFields": [
-				{
-					"Type": "Form",
-					"Name": "FormName3",
-					"Properties": [ "action=/api/SubmitData", "method=post", "change=/api/SubmitValue" ]
-				},
 				{
 					"Type": "text",
 					"Name": "text1"
@@ -39,5 +35,5 @@
 				}
 			]
 		}
-	]	
+	]
 }

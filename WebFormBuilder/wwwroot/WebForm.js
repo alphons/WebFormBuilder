@@ -51,23 +51,43 @@
 	window.generateForm = function generateForm(formContainerId, formConfig, submitFormUrl, submitValueUrl)
 	{
 		const formContainer = document.getElementById(formContainerId)
-
 		const form = document.createElement("form");
+		const header = document.createElement("div");
+		form.appendChild(header);
+		header.outerHTML = formConfig.HtmlHeader ?? "";
 
-		form.id = "formDynamic"; // TODO
-		FormUrl = formConfig.Action;
-		ValueUrl = formConfig.Change;
+		form.id = formConfig.Name;
+		if (submitFormUrl)
+			FormUrl = submitFormUrl;
+		if (submitValueUrl)
+			ValueUrl = submitValueUrl;
+
+		form["action"] = formConfig.Action;
+		form["change"] = formConfig.Change;
 
 		var index = 0;
-		formConfig.FieldSets[0].FormFields.forEach((field) =>
+		for (let i = 0; i < formConfig.FieldSets.length; i++)
 		{
-			field.Name ??= `text${index}`, index++;
-			field.Type = (field.Type ?? "text").toLowerCase();
-			field.Label ??= toPascalCase(field.Name);
-			const wrapper = document.createElement("div");
-			generateField(field, wrapper);
-			form.appendChild(wrapper);
-		});
+			const fieldsetConfig = formConfig.FieldSets[i];
+			const legend = document.createElement("legend");
+			const fieldset = document.createElement("fieldset");
+			if (i > 0)
+				fieldset.setAttribute("hidden", "hidden");
+			legend.textContent = fieldsetConfig.Legend ?? `Fieldset ${i + 1}`;
+			legend.setAttribute("hidden", "hidden");
+			fieldset.appendChild(legend);
+			form.appendChild(fieldset);
+
+			fieldsetConfig.FormFields.forEach((field) =>
+			{
+				field.Name ??= `text${index}`, index++;
+				field.Type = (field.Type ?? "text").toLowerCase();
+				field.Label ??= toPascalCase(field.Name);
+				const wrapper = document.createElement("div");
+				generateField(field, wrapper);
+				fieldset.appendChild(wrapper);
+			});
+		}
 
 		formContainer.replaceChildren();
 		formContainer.appendChild(form);

@@ -18,7 +18,7 @@ body
 	display: flex;
 	min-height: 100vh;
 	background: #f4f4f9;
-	padding:20px;
+	padding: 20px;
 }
 
 .form-container
@@ -31,8 +31,9 @@ body
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-	.form-container form
+	.form-container form fieldset:not([hidden])
 	{
+		border: none;
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
@@ -96,6 +97,7 @@ body
 		cursor: pointer;
 		transition: all 0.3s ease;
 	}
+
 		.form-container
 		button:disabled:hover,
 		button[disabled]:hover,
@@ -148,13 +150,6 @@ body
 	{
 		display: flex;
 		flex-direction: column;
-	}
-
-	.form-container fieldset
-	{
-		display: flex;
-		flex-direction: column;
-		border:none;
 	}
 
 	.form-container .radio-group,
@@ -297,4 +292,3 @@ body
 		{
 			text-align: right;
 		}
-

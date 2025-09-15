@@ -17,8 +17,10 @@ public class FormConfigController : ControllerBase
 
 			foreach (HtmlInputType type in Enum.GetValues(typeof(HtmlInputType)))
 			{
-				if (type == HtmlInputType.Unknown || type == HtmlInputType.Form)
+				if (type == HtmlInputType.Unknown)
 					continue;
+
+				// for every type, make a button
 				formFields.Add(new FormField
 				{
 					Type = HtmlInputType.Button,
@@ -31,11 +33,21 @@ public class FormConfigController : ControllerBase
 			formFields.Add(new FormField
 			{
 				Type = HtmlInputType.Button,
+				Name = "exampleform",
+				Label = string.Empty,
+				Value = "Form Example"
+			});
+
+			// button to select formConfigData example
+			formFields.Add(new FormField
+			{
+				Type = HtmlInputType.Button,
 				Name = "formConfigData",
 				Label = string.Empty,
 				Value = "All of the above"
 			});
 
+			// example the navigation on the left
 			formFields.Add(new FormField
 			{
 				Type = HtmlInputType.Button,
@@ -44,8 +56,10 @@ public class FormConfigController : ControllerBase
 				Value = "This Navigation"
 			});
 
+			// make a form with these buttons
 			var form1 = new Form()
 			{
+				Name = "Form1",
 				HtmlHeader = "<h3>Example</h3>",
 				Action = "/api/SubmitData",
 				Change = "/api/SubmitValue",
@@ -59,7 +73,6 @@ public class FormConfigController : ControllerBase
 
 			return Ok(form1);
 		}
-
 
 		var jsonFilePath = Path.Combine(AppContext.BaseDirectory, "Examples", name + ".json");
 
@@ -80,27 +93,14 @@ public class FormConfigController : ControllerBase
 
 		stream = new FileStream(jsonFilePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
 
-		var list = await JsonSerializer.DeserializeAsync<List<FormField>>(stream) ?? [];
+		var form2 = await JsonSerializer.DeserializeAsync<Form>(stream) ?? new();
 
 		stream.Dispose();
 
 		if (!Enum.TryParse(name, ignoreCase: true, out HtmlInputType typeEnum))
 			return NotFound();
 
-		list.RemoveAll(x => x.Type != typeEnum);
-
-		var form2 = new Form()
-		{
-			HtmlHeader = "<h3>Example</h3>",
-			Action = "/api/SubmitData",
-			Change = "/api/SubmitValue",
-			FieldSets = [new FieldSet()
-				{
-					Id = 0,
-					Legend = "Of the fall",
-					FormFields = list
-				}]
-		};
+		form2.FieldSets[0].FormFields.RemoveAll(x => x.Type != typeEnum);
 
 		return Ok(form2);
 

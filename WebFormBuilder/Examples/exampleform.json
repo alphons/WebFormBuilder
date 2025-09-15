@@ -1,0 +1,37 @@
+{
+	"HtmlHeader": "<h1>Dit is een example form</h1>",
+	"Name": "ExampleForm",
+	"Action": "/api/SubmitForm",
+	"Change": "/api/SubmitValue",
+	"FieldSets": [
+		{
+			"Id": 1,
+			"Legend": "Naw gegevens",
+			"FormFields": [
+				{
+					"Name": "Naam"
+				},
+				{
+					"Name": "Adres"
+				},
+				{
+					"Name": "Woonplaats"
+				},
+				{
+					"Type": "Radio",
+					"Name": "Partner",
+					"Options": [ "Ja", "Nee", "Weet niet" ]
+				}
+			]
+		},
+		{
+			"Id": 3,
+			"Legend": "Partner gegevens",
+			"FormFields": [
+				{
+					"Name": "PartnerNaam"
+				}
+			]
+		}
+	]
+}

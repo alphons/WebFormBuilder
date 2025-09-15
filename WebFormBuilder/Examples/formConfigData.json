@@ -1,5 +1,6 @@
 {
 	"HtmlHeader": "<h1>Dit is een goede header</h1>",
+	"Name": "BigListExample",
 	"Action": "/api/SubmitForm",
 	"Change": "/api/SubmitValue",
 	"FieldSets": [
@@ -7,11 +8,6 @@
 			"Id": 1,
 			"Legend": "Examples",
 			"FormFields": [
-				{
-					"Type": "Form",
-					"Name": "FormName1",
-					"Properties": [ "action=/api/SubmitData", "method=post", "change=/api/SubmitValue" ]
-				},
 				{
 					"Type": "Text",
 					"Name": "username",
@@ -27,7 +23,7 @@
 					"Label": "Email Address",
 					"Placeholder": "Enter your email address",
 					"Tooltip": "We will send important updates to this email.",
-					"Properties": [ "autocomplete=email", "hidden=hidden" ],
+					"Properties": [ "autocomplete=email" ],
 					"Value": "example@example.com"
 				},
 				{
@@ -213,4 +209,3 @@
 		}
 	]
 }
-
