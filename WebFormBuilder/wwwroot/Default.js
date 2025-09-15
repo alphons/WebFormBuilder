@@ -80,6 +80,17 @@ async function handleInputEvent(event)
 		if (response.ok)
 		{
 			const result = await response.json();
+			if (result.action)
+			{
+				const fieldset = document.querySelector('[data-id="' + result.id + '"]');
+				if (fieldset)
+				{
+					if (result.action === "show")
+						fieldset.style.display = "flex";
+					if (result.action === "hide")
+						fieldset.style.display = "";
+				}
+			}
 			console.log('Success:', result);
 		}
 		else

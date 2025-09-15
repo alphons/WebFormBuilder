@@ -71,6 +71,7 @@
 			const fieldsetConfig = formConfig.FieldSets[i];
 			const legend = document.createElement("legend");
 			const fieldset = document.createElement("fieldset");
+			fieldset.dataset.id = fieldsetConfig.Id;
 			if (i > 0)
 				fieldset.setAttribute("hidden", "hidden");
 			legend.textContent = fieldsetConfig.Legend ?? `Fieldset ${i + 1}`;
