@@ -5,7 +5,7 @@ namespace WebFormBuilder.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class SubmitDataController : ControllerBase
+public class SubmitFormController : ControllerBase
 {
 	[HttpPost]
 	[Consumes("multipart/form-data")]
